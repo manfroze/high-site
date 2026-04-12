@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="8 0 153 24">
+  <style>
+    .lt { fill: #f0e8d8; font-family: Futura, 'Avenir Next', 'Century Gothic', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; }
+    .lg { fill: none; stroke: #f0e8d8; stroke-width: 1.05; opacity: 0.88; }
+  </style>
+  <g transform="translate(8 0)">
+    <text x="0" y="16" text-anchor="start" class="lt">ATLAS</text>
+    <g transform="translate(67 11.8)" class="lg">
+      <circle r="9.2"/>
+      <ellipse rx="4.2" ry="9.2"/>
+      <ellipse rx="7.2" ry="9.2"/>
+      <path d="M-8.2 -3.1c2.1 1.1 5 1.7 8.2 1.7s6.1-.6 8.2-1.7"/>
+      <path d="M-8.2 3.1c2.1-1.1 5-1.7 8.2-1.7s6.1.6 8.2 1.7"/>
+    </g>
+    <text x="84" y="16" text-anchor="start" class="lt">MUNDI</text>
+  </g>
+</svg>

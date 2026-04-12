@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import '../styles/global.css';
+---
+
+<Layout>
+
+  <div class="liquid-bg" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <header>
+    <div class="header-left">
+      <img class="header-logo" src="/img/logo.svg" alt="HIJINKS logo" />
+      <div class="header-info">
+        <div class="social-icons">
+          <a href="mailto:highlyintegratedgayhijinks@gmail.com" aria-label="Email"><img src="/img/icon-email.svg" alt="Email" /></a>
+          <a href="https://highlyintegratedgayhijink.itch.io/" aria-label="Itch.io"><img src="/img/icon-itch.svg" alt="Itch.io" /></a>
+          <a href="https://www.patreon.com/HIGH_hijinks" aria-label="Patreon"><img src="/img/icon-patreon.svg" alt="Patreon" /></a>
+          <a href="https://discord.gg/HIGH" aria-label="Discord"><img src="/img/icon-discord.svg" alt="Discord" /></a>
+          <a href="https://t.me/highijinks" aria-label="Telegram"><img src="/img/icon-telegram.svg" alt="Telegram" /></a>
+        </div>
+        <p class="tagline">
+          <strong><span class="cyan">Highly</span> <span class="red">Integrated</span> <span class="pink">Gay</span> <span class="cyan">Hijinks</span></strong> is our creative lab.<br />
+          We are friends and we do whatever we want.<br />
+          We may not be entirely gay, but our hijinks surely are.
+        </p>
+      </div>
+    </div>
+    <img class="header-icon" src="/img/logo-icon.png" alt="" />
+  </header>
+
+  <main>
+
+    <div class="card-grid">
+      <ProjectCard id="worldr" cover href="https://worldr.net">
+        <div class="card-inner">
+          <img class="worldr-logo" src="/img/worldr-logo.svg" alt="WORLDR" />
+          <p class="card-desc">Build and explore the worlds behind your stories. A rich database for lore, geography, characters, and more.</p>
+          <div class="card-tags">
+            <span>worldbuilding</span><span>tool</span><span>storytelling</span>
+          </div>
+        </div>
+      </ProjectCard>
+    </div>
+
+    <div class="card-grid">
+      <ProjectCard id="atlas" cover href="https://atlasmundi.net">
+        <img slot="bg" class="atlas-map-bg" src="/img/atlas-map.svg" alt="" />
+        <div class="card-inner">
+          <img class="atlas-logo" src="/img/atlas-mundi-logo.svg" alt="ATLAS MUNDI" />
+          <p class="card-desc">An interactive world map with data on every country — politics, demographics, geography, and more.</p>
+          <div class="card-tags">
+            <span>world map</span><span>data</span><span>geography</span><span>interactive</span>
+          </div>
+        </div>
+      </ProjectCard>
+    </div>
+
+    <div class="card-grid">
+      <ProjectCard id="mundialazo" href="https://mundialazo.net">
+        <div class="card-inner">
+          <img class="mundialazo-logo" src="/img/mundialazologo.svg" alt="Mundialazo" />
+          <p class="card-desc">Track football players, clubs, and venues across the world.</p>
+          <div class="card-tags">
+            <span>football</span><span>sports</span><span>data</span>
+          </div>
+        </div>
+      </ProjectCard>
+    </div>
+
+    <div class="card-grid">
+      <ProjectCard id="vexillomania" href="https://vexillomania.net">
+        <div class="card-inner">
+          <img class="vexillomania-logo" src="/img/vexillomanialogo.svg" alt="" aria-hidden="true" />
+          <strong class="vexillomania-name">Vexillomania</strong>
+          <p class="card-desc">A catalog of flags from around the world — history, symbolism, and design.</p>
+          <div class="card-tags">
+            <span>flags</span><span>vexillology</span><span>reference</span>
+          </div>
+        </div>
+      </ProjectCard>
+    </div>
+
+    <div class="card-grid">
+      <ProjectCard id="extravagaria" cover badge="Coming Soon" href="https://extravagaria.net">
+        <div class="card-inner">
+          <strong class="extravagaria-name">Extravagaria</strong>
+          <p class="card-desc">An upcoming adventure game.</p>
+          <div class="card-tags">
+            <span>game</span><span>coming soon</span>
+          </div>
+        </div>
+      </ProjectCard>
+    </div>
+
+    <div class="card-grid">
+      <ProjectCard id="yarda" href="https://yarda.io">
+        <div class="card-inner">
+          <img class="yarda-logo" src="/img/yarda-logo.svg" alt="Yarda" />
+          <p class="card-desc">A daily word game played in Telegram groups.</p>
+          <div class="card-tags">
+            <span>word game</span><span>telegram</span><span>daily</span>
+          </div>
+        </div>
+      </ProjectCard>
+      <ProjectCard id="redattolo" href="https://redattolo.vercel.app">
+        <div class="card-inner">
+          <img class="redattolo-logo" src="/img/redattolo-logo.svg" alt="Redattolo" />
+          <p class="card-desc">A collaborative word editing game.</p>
+          <div class="card-tags">
+            <span>game</span><span>writing</span><span>collaborative</span>
+          </div>
+        </div>
+      </ProjectCard>
+      <ProjectCard id="chromle" href="https://chromle.vercel.app">
+        <img slot="bg" class="card-bgimg" src="/img/chromle-bg.svg" alt="" />
+        <div class="card-inner">
+          <img class="chromle-logo" src="/img/chromle-logo.svg" alt="Chromle" />
+          <p class="card-desc">Guess the color from its name in six attempts.</p>
+          <div class="card-tags">
+            <span>game</span><span>color</span><span>daily</span>
+          </div>
+        </div>
+      </ProjectCard>
+      <ProjectCard id="cadavra" href="https://cadavra.net">
+        <div class="card-inner">
+          <div class="cadavra-logo-group">
+            <img class="cadavra-skull" src="/img/cadavra-skull.png" alt="" />
+            <span class="cadavra-wordmark">cadavra</span>
+          </div>
+          <p class="card-desc">A collaborative exquisite corpse storytelling game.</p>
+          <div class="card-tags">
+            <span>game</span><span>collaborative</span><span>writing</span>
+          </div>
+        </div>
+      </ProjectCard>
+    </div>
+
+    <div class="card-grid">
+      <ProjectCard id="shipshape" cover href="https://highlyintegratedgayhijink.itch.io/shipshape">
+        <img class="shipshape-logo" src="/img/shipshape-logo.png" alt="Ship Shape" />
+      </ProjectCard>
+    </div>
+
+  </main>
+
+  <footer>
+    <img class="footer-logo" src="/img/logo-footer.svg" alt="HIJINKS logo" />
+    <p class="footer-text">
+      <span class="red">&copy; 2024</span>
+      <span class="cyan"> Highly</span>
+      <span class="red"> Integrated</span>
+      <span class="pink"> Gay</span>
+      <span class="cyan"> Hijinks</span>
+    </p>
+  </footer>
+
+</Layout>

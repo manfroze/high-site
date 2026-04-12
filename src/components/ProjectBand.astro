@@ -1,0 +1,31 @@
+---
+interface Props {
+  id: string;
+  logo: string;
+  logoAlt?: string;
+  cta?: string;
+  href?: string;
+  note?: string;
+}
+
+const { id, logo, logoAlt = '', cta, href, note } = Astro.props;
+---
+
+<div class="band" id={id}>
+  <div class="wrapper">
+    <div class="left">
+      <div class="logo">
+        <img src={logo} alt={logoAlt} />
+      </div>
+      {cta && href && (
+        <div class="button">
+          <a href={href}>{cta}</a>
+        </div>
+      )}
+      {note && <div class="note">{note}</div>}
+    </div>
+    <div class="right">
+      <slot />
+    </div>
+  </div>
+</div>

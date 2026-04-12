@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 36">
+  <defs>
+    <mask id="star-cut">
+      <rect width="36" height="36" fill="white"/>
+      <path d="M26.25 3.6l2.85 6.0 6.0 2.85-6.0 2.85-2.85 6.0-2.85-6.0-6.0-2.85 6.0-2.85z" fill="black"/>
+    </mask>
+  </defs>
+  <style>
+    .wt { fill: #ffc95c; font-family: 'Arial Black', 'Arial Bold', Helvetica, sans-serif; font-size: 28px; font-weight: 900; letter-spacing: 0; }
+  </style>
+  <!-- W -->
+  <text x="0" y="28" class="wt">W</text>
+  <!-- O as circle with star cutout -->
+  <circle cx="72" cy="18" r="13.875" fill="#ffc95c" mask="url(#star-cut)" transform="translate(0 0)"/>
+  <!-- RLDR -->
+  <text x="92" y="28" class="wt">RLDR</text>
+</svg>

@@ -1,0 +1,305 @@
+html, body {
+	margin:  0;
+	font-family: 'Montserrat';
+}
+
+#header {
+	display: none;
+	height: 70px;
+	text-align: center;
+}
+
+#headwrap {
+	margin: 0 auto;
+	max-width: 1140px;
+	height: 100%;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+
+}
+
+#corner {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100px;
+	height: 100px;
+	background-image: url('img/pumocorner.svg');
+}
+
+#corner a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.menu {
+	font-family: 'Montserrat';
+	font-size: 12px;
+	float: left;
+	padding: 25px 0;
+	box-sizing: border-box;
+	width:  100px;
+}
+
+.menu a {
+	text-decoration: none;
+	color: #000;
+}
+
+#logo {
+	height: 100%;
+}
+
+#logo img {
+	height: 40px;
+	margin-top: 15px;
+}
+
+#main.band {
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	background-origin: content-box;
+	background-image: url('img/mainbg.svg');
+	background-size: 500px;
+}
+
+#redattolo {
+	background-color: #e2e8f0;
+}
+
+#chromle {
+	background-color: #fff;
+}
+
+#yarda {
+	background:  linear-gradient(to right, #2CDD2C, #8ADD2C);
+}
+
+#keydraw {
+	background-color: #444444;
+}
+
+#shaperino {
+	background-color: #DDD;
+}
+
+#shipshape {
+	background-image: url('img/bricks.png');
+}
+
+#shipshape .logo {
+	padding: 0;
+}
+
+#shipshape .logo img {
+	height: 100%;
+}
+
+#shipshape .right img {
+	width: 162px;
+	margin-right: 20px;
+	border: 3px solid black;
+	margin-top: 52px;
+}
+
+#shipshape .right img:last-child {
+	margin-right: 0px;
+}
+
+#shipshape iframe {
+	margin-top: 20px;
+	opacity: 1;
+}
+
+.wrapper {
+	margin: 0 auto;
+	padding: 0 20px;
+	max-width: 900px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.wrapper .right {
+	background-repeat: no-repeat;
+	background-position: bottom center;
+	background-origin: content-box;
+}
+
+.left, .right {
+	display: inline-block;
+	width:  50%;
+	height: 400px;
+	min-width: 570px;
+	margin: 0 auto;
+}
+
+#main .left, #main .right {
+	height: 500px;
+}
+
+#main .text {
+	font-family: 'Montserrat';
+	font-weight: lighter;
+	font-size: 16px;
+	margin-top: 50px;
+	line-height: 1.5;
+	width:  100%;
+}
+
+#caubbu {
+	width: 120px;
+	height: 120px;
+	margin: 30px 0;
+}
+
+#caubbu img {
+	width: 100%;
+	height: 100%;
+}
+
+#yarda .wrapper .right {
+	background-image: url('img/yardabg.svg');
+	background-size: 100%;
+}
+
+#keydraw .wrapper .right{
+	background-image: url('img/keydrawbg.svg');
+	background-size: 80%;
+}
+
+#shaperino .wrapper .right{
+	background-image: url('img/shaperinobg.svg');
+	background-position: center center;
+	background-size: 60%;
+}
+
+#redattolo .wrapper .right{
+	background-image: url('img/redattolobg.svg');
+	background-position: center center;
+	background-size: 60%;
+}
+
+#chromle .wrapper .right{
+	background-image: url('img/chromlebg.svg');
+	background-position: center center;
+	background-size: 90%;
+}
+
+#shipshape .wrapper .right{
+	//background-image: url('img/shipshapebg.png');
+	background-position: center center;
+	background-size: 200px;
+}
+
+.logo {
+	margin: 0 auto;
+	width: 400px;
+	padding-top: 70px;
+	box-sizing: border-box;
+}
+
+#main .logo {
+	width:  400px;
+	margin: 0 0;
+}
+
+.button {
+	width: 250px;
+	height: 60px;
+	background-color: #FFF;
+	margin: 0 auto;
+	margin-top: 50px;
+	border-radius: 10px;
+	box-sizing: border-box;
+}
+
+.button:hover {
+	opacity: 0.8;
+}
+
+#shaperino .button {
+	background-color: #222;
+}
+
+#chromle .button {
+	background-color: #f56565;
+}
+
+.button a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 18px;
+	text-align: center;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#redattolo .button a {
+	color: #000;
+}
+
+#chromle .button a {
+	color: #fff;
+}
+
+#yarda .button a {
+	color: #0071FF;
+}
+
+#keydraw .button a {
+	color: #444444;
+}
+
+#shaperino .button a {
+	color: #FFFFFF;
+}
+
+
+
+.note {
+	width: 200px;
+	height: 20px;
+	margin: 10px auto;
+	text-align: center;
+	color: #FFF;
+	font-size: 13px;
+}
+
+#redattolo .note {
+	color: #000;
+}
+
+#footer {
+	height: 70px;
+	text-align: center;
+	padding: 25px;
+	font-family: 'Montserrat';
+	font-size: 20px;
+	box-sizing: border-box;
+}
+
+.cyan { color: #54E2DC; }
+.red { color: #E70006; }
+.pink { color: #D979FF; }
+
+
+@media only screen and (max-width: 1300px) {
+	#main .left {
+		height: auto;
+		text-align: center;
+	}
+	#caubbu {
+		margin: 30px auto;
+	}
+	#main .right {
+		display: none;
+	}
+	#main.band {
+		background: none;
+	}
+}

@@ -1,0 +1,21 @@
+---
+interface Props {
+  id: string;
+  bg?: string;
+  logo?: string;
+  logoAlt?: string;
+  badge?: string;
+  href?: string;
+  cover?: boolean;
+}
+
+const { id, bg, logo, logoAlt = '', badge, href, cover = false } = Astro.props;
+---
+
+<div class:list={['project-card', { 'card--cover': cover }]} id={id} style={bg ? `background: ${bg}` : ''}>
+  <slot name="bg" />
+  {logo && <img class="card-logo" src={logo} alt={logoAlt} />}
+  <slot />
+  {badge && <span class="card-badge">{badge}</span>}
+  {href && <a class="card-link" href={href} aria-label={logoAlt}></a>}
+</div>
