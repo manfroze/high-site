@@ -22,9 +22,10 @@ import '../styles/global.css';
           <div class="social-icons">
             <a href="mailto:highlyintegratedgayhijinks@gmail.com" aria-label="Email"><img src="/img/icon-email.svg" alt="Email" /></a>
             <a href="https://highlyintegratedgayhijink.itch.io/" aria-label="Itch.io"><img src="/img/icon-itch.svg" alt="Itch.io" /></a>
-            <a href="https://www.patreon.com/HIGH_hijinks" aria-label="Patreon"><img src="/img/icon-patreon.svg" alt="Patreon" /></a>
+            <a href="https://www.patreon.com/HighlyIntegratedGayHijinks" aria-label="Patreon"><img src="/img/icon-patreon.svg" alt="Patreon" /></a>
             <a href="https://discord.gg/HIGH" aria-label="Discord"><img src="/img/icon-discord.svg" alt="Discord" /></a>
-            <a href="https://t.me/highijinks" aria-label="Telegram"><img src="/img/icon-telegram.svg" alt="Telegram" /></a>
+            <a href="https://t.me/hijink" aria-label="Telegram"><img src="/img/icon-telegram.svg" alt="Telegram" /></a>
+            <a href="https://bsky.app/profile/highjinks.bsky.social" aria-label="Bluesky"><img src="/img/icon-bluesky.svg" alt="Bluesky" /></a>
           </div>
           <p class="tagline">
             <strong><span class="cyan">Highly</span> <span class="red">Integrated</span> <span class="pink">Gay</span> <span class="cyan">Hijinks</span></strong> is our creative lab.<br />
@@ -33,131 +34,1088 @@ import '../styles/global.css';
           </p>
         </div>
       </div>
-      <img class="header-icon" src="/img/logo-icon.png" alt="" />
     </header>
 
-    <div class="card-grid">
-      <ProjectCard id="worldr" cover href="https://worldr.net">
-        <div class="card-inner">
-          <img class="worldr-logo" src="/img/worldr-logo.svg" alt="WORLDR" />
-          <p class="card-desc">Build and explore the worlds behind your stories. A rich database for lore, geography, characters, and more.</p>
-          <div class="card-tags">
-            <span>worldbuilding</span><span>tool</span><span>storytelling</span>
-          </div>
-        </div>
-      </ProjectCard>
-    </div>
+    <div class="icon-column" aria-hidden="true"></div>
 
-    <div class="card-grid">
-      <ProjectCard id="atlas" cover href="https://atlasmundi.net">
-        <img slot="bg" class="atlas-map-bg" src="/img/atlas-map.svg" alt="" />
-        <div class="card-inner">
-          <img class="atlas-logo" src="/img/atlas-mundi-logo.svg" alt="ATLAS MUNDI" />
-          <p class="card-desc">An interactive world map with data on every country — politics, demographics, geography, and more.</p>
-          <div class="card-tags">
-            <span>world map</span><span>data</span><span>geography</span><span>interactive</span>
-          </div>
-        </div>
-      </ProjectCard>
-    </div>
+    <script>
+      const col = document.querySelector('.icon-column');
+      // Base transparent colors from the HIGH logo
+      const baseColors = ['#92f0ed', '#ebb0ff'];
+      const red = '#e70006';
 
-    <div class="card-grid">
-      <ProjectCard id="mundialazo" href="https://mundialazo.net">
-        <div class="card-inner">
-          <img class="mundialazo-logo" src="/img/mundialazologo.svg" alt="Mundialazo" />
-          <p class="card-desc">Track football players, clubs, and venues across the world.</p>
-          <div class="card-tags">
-            <span>football</span><span>sports</span><span>data</span>
-          </div>
-        </div>
-      </ProjectCard>
-    </div>
+      function fillSquares() {
+        col.innerHTML = '';
+        const pageHeight = Math.max(document.documentElement.scrollHeight, window.innerHeight);
+        col.style.height = pageHeight + 'px';
+        const size = Math.floor(200 / 3);
+        const gridCols = 3;
+        const rows = Math.ceil(pageHeight / size);
+        const totalCells = rows * gridCols;
 
-    <div class="card-grid">
-      <ProjectCard id="vexillomania" href="https://vexillomania.net">
-        <div class="card-inner">
-          <img class="vexillomania-logo" src="/img/vexillomanialogo.svg" alt="" aria-hidden="true" />
-          <strong class="vexillomania-name">Vexillomania</strong>
-          <p class="card-desc">A catalog of flags from around the world — history, symbolism, and design.</p>
-          <div class="card-tags">
-            <span>flags</span><span>vexillology</span><span>reference</span>
-          </div>
-        </div>
-      </ProjectCard>
-    </div>
+        // Pre-generate tile types with even distribution
+        // Types: 'cyan1', 'cyan2', 'pink1', 'pink2', 'red', 'diamond',
+        //        'cyan+cyan', 'pink+pink', 'cyan+pink', 'pink+cyan'
+        const tileTypes = [];
+        // 70% two-layer, rest single/special
+        const twoLayer = ['cyan+pink', 'pink+cyan', 'cyan+cyan', 'pink+pink', 'cyan+pink', 'pink+cyan', 'cyan+red', 'pink+red'];
+        const oneLayer = ['cyan1', 'pink1', 'cyan1', 'pink1', 'red', 'diamond', 'triangle'];
 
-    <div class="card-grid">
-      <ProjectCard id="extravagaria" cover badge="Coming Soon" href="https://extravagaria.net">
-        <div class="card-inner">
-          <strong class="extravagaria-name">Extravagaria</strong>
-          <p class="card-desc">An upcoming adventure game.</p>
-          <div class="card-tags">
-            <span>game</span><span>coming soon</span>
-          </div>
-        </div>
-      </ProjectCard>
-    </div>
+        // Get individual colors in a tile type
+        function colors(t) {
+          if (t === 'empty') return ['empty'];
+          if (t === 'diamond') return ['red'];
+          if (t === 'triangle') return ['pink', 'cyan'];
+          if (t === 'diamond+triangle') return ['red', 'pink', 'cyan'];
+          if (t === 'red') return ['red'];
+          if (t === 'cyan1') return ['cyan'];
+          if (t === 'pink1') return ['pink'];
+          return t.split('+').map(c => c === '#92f0ed' ? 'cyan' : c === '#ebb0ff' ? 'pink' : c);
+        }
 
-    <div class="card-grid">
-      <ProjectCard id="yarda" href="https://yarda.io">
-        <div class="card-inner">
-          <img class="yarda-logo" src="/img/yarda-logo.svg" alt="Yarda" />
-          <p class="card-desc">A daily word game played in Telegram groups.</p>
-          <div class="card-tags">
-            <span>word game</span><span>telegram</span><span>daily</span>
-          </div>
-        </div>
-      </ProjectCard>
-      <ProjectCard id="redattolo" href="https://redattolo.vercel.app">
-        <div class="card-inner">
-          <img class="redattolo-logo" src="/img/redattolo-logo.svg" alt="Redattolo" />
-          <p class="card-desc">A collaborative word editing game.</p>
-          <div class="card-tags">
-            <span>game</span><span>writing</span><span>collaborative</span>
-          </div>
-        </div>
-      </ProjectCard>
-      <ProjectCard id="chromle" href="https://chromle.vercel.app">
-        <img slot="bg" class="card-bgimg" src="/img/chromle-bg.svg" alt="" />
-        <div class="card-inner">
-          <img class="chromle-logo" src="/img/chromle-logo.svg" alt="Chromle" />
-          <p class="card-desc">Guess the color from its name in six attempts.</p>
-          <div class="card-tags">
-            <span>game</span><span>color</span><span>daily</span>
-          </div>
-        </div>
-      </ProjectCard>
-      <ProjectCard id="cadavra" href="https://cadavra.net">
-        <div class="card-inner">
-          <div class="cadavra-logo-group">
-            <img class="cadavra-skull" src="/img/cadavra-skull.png" alt="" />
-            <span class="cadavra-wordmark">cadavra</span>
-          </div>
-          <p class="card-desc">A collaborative exquisite corpse storytelling game.</p>
-          <div class="card-tags">
-            <span>game</span><span>collaborative</span><span>writing</span>
-          </div>
-        </div>
-      </ProjectCard>
-    </div>
+        function hasOverlap(colorsA, colorsB) {
+          return colorsA.some(c => colorsB.includes(c));
+        }
 
-    <div class="card-grid">
-      <ProjectCard id="shipshape" cover href="https://highlyintegratedgayhijink.itch.io/shipshape">
-        <img class="shipshape-logo" src="/img/shipshape-logo.png" alt="Ship Shape" />
-      </ProjectCard>
-    </div>
+        // Build pool: each square is an independent color pick
+        // Target: ~15% red, ~42% cyan, ~43% pink across all individual squares
+        function pickColor() {
+          const r = Math.random();
+          if (r < 0.06) return 'red';
+          if (r < 0.53) return 'cyan';
+          return 'pink';
+        }
+
+        function pickTile() {
+          const roll = Math.random();
+          if (roll < 0.04) return 'diamond';
+          if (roll < 0.07) return 'empty';
+          const c1 = pickColor();
+          if (roll < 0.50) {
+            // Single layer
+            if (c1 === 'red') return 'red';
+            return c1 + '1';
+          }
+          // Two layers
+          let c2 = pickColor();
+          // No red+red or red+diamond combos
+          if (c1 === 'red' && c2 === 'red') c2 = Math.random() < 0.5 ? 'cyan' : 'pink';
+          const map = { cyan: '#92f0ed', pink: '#ebb0ff', red: '#e70006' };
+          // Use the type naming that colorMap expects
+          if (c1 === 'red' && c2 !== 'red') return 'red+' + c2;
+          if (c2 === 'red' && c1 !== 'red') return c1 + '+red';
+          return c1 + '+' + c2;
+        }
+
+        // Pre-place diamonds evenly
+        const diamondInterval = Math.floor(totalCells / Math.max(1, Math.round(totalCells * 0.04)));
+        const diamondSlots = new Set();
+        for (let d = Math.floor(diamondInterval / 2); d < totalCells; d += diamondInterval) {
+          const jittered = d + Math.floor((Math.random() - 0.5) * Math.floor(diamondInterval * 0.4));
+          if (jittered >= 0 && jittered < totalCells) diamondSlots.add(jittered);
+        }
+
+        // Pre-place triangles evenly
+        const triangleInterval = Math.floor(totalCells / Math.max(1, Math.round(totalCells * 0.06)));
+        const triangleSlots = new Set();
+        for (let t = Math.floor(triangleInterval / 3); t < totalCells; t += triangleInterval) {
+          const jittered = t + Math.floor((Math.random() - 0.5) * Math.floor(triangleInterval * 0.4));
+          if (jittered >= 0 && jittered < totalCells) triangleSlots.add(jittered);
+        }
+
+        for (let i = 0; i < totalCells; i++) {
+          let pick;
+          // Allow diamond+triangle overlap
+          if (diamondSlots.has(i) && triangleSlots.has(i)) {
+            pick = 'diamond+triangle';
+          } else if (diamondSlots.has(i)) {
+            pick = 'diamond';
+          } else if (triangleSlots.has(i)) {
+            pick = 'triangle';
+          } else {
+            pick = pickTile();
+            while (pick === 'diamond') pick = pickTile();
+          }
+          let pickColors = colors(pick);
+
+          // Anti-clump: reject if shares any color with neighbour or tile above
+          if (!pick.includes('diamond') && pick !== 'triangle') {
+            const prev = tileTypes[i - 1];
+            const above = tileTypes[i - gridCols];
+            let attempts = 0;
+            while (attempts < 20 && (
+              (prev && hasOverlap(pickColors, colors(prev))) ||
+              (above && hasOverlap(pickColors, colors(above)))
+            )) {
+              pick = pickTile();
+              while (pick === 'diamond') pick = pickTile();
+              pickColors = colors(pick);
+              attempts++;
+            }
+          }
+
+          tileTypes.push(pick);
+        }
+
+        let idx = 0;
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < gridCols; c++) {
+            const x = c * size;
+            const y = r * size;
+            const type = tileTypes[idx++];
+
+            if (type === 'empty') {
+              const sq = document.createElement('div');
+              sq.className = 'logo-square';
+              sq.dataset.tileType = 'empty';
+              sq.dataset.color = 'empty';
+              sq.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                position: absolute;
+                left: ${x}px;
+                top: ${y}px;
+              `;
+              col.appendChild(sq);
+              continue;
+            }
+
+            if (type === 'diamond+triangle') {
+              // Background cyan
+              const bg = document.createElement('div');
+              bg.className = 'logo-square';
+              bg.dataset.tileType = 'diamond+triangle';
+              bg.dataset.color = 'cyan';
+              bg.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                background: #92f0ed;
+                position: absolute;
+                left: ${x}px;
+                top: ${y}px;
+                mix-blend-mode: multiply;
+              `;
+              col.appendChild(bg);
+              // Triangle
+              const tri = document.createElement('div');
+              tri.className = 'logo-square';
+              tri.dataset.color = 'triangle';
+              tri.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                background: #ebb0ff;
+                position: absolute;
+                left: ${x}px;
+                top: ${y}px;
+                clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
+                mix-blend-mode: multiply;
+              `;
+              col.appendChild(tri);
+              // Diamond on top
+              const dia = document.createElement('div');
+              dia.className = 'logo-square';
+              dia.style.cssText = `
+                width: ${size * 0.7}px;
+                height: ${size * 0.7}px;
+                background: ${red};
+                position: absolute;
+                left: ${x + size * 0.15}px;
+                top: ${y + size * 0.15}px;
+                transform: rotate(45deg);
+              `;
+              col.appendChild(dia);
+              continue;
+            }
+
+            if (type === 'triangle') {
+              // Random background layers behind the triangle
+              const bgOptions = [
+                ['#92f0ed'],
+                ['#e70006'],
+                ['#92f0ed', '#92f0ed'],
+                ['#92f0ed', '#ebb0ff'],
+              ];
+              const bgColors = bgOptions[Math.floor(Math.random() * bgOptions.length)];
+              let firstBg = true;
+              for (const bgc of bgColors) {
+                const bg = document.createElement('div');
+                bg.className = 'logo-square';
+                if (firstBg) { bg.dataset.tileType = 'triangle'; firstBg = false; }
+                const isRed = bgc === '#e70006';
+                bg.style.cssText = `
+                  width: ${size}px;
+                  height: ${size}px;
+                  background: ${bgc};
+                  position: absolute;
+                  left: ${x}px;
+                  top: ${y}px;
+                  ${isRed ? '' : 'mix-blend-mode: multiply;'}
+                `;
+                col.appendChild(bg);
+              }
+              const sq = document.createElement('div');
+              sq.className = 'logo-square';
+              sq.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                background: #ebb0ff;
+                position: absolute;
+                left: ${x}px;
+                top: ${y}px;
+                clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
+                mix-blend-mode: multiply;
+              `;
+              col.appendChild(sq);
+              continue;
+            }
+
+            if (type === 'diamond') {
+              const sq = document.createElement('div');
+              sq.className = 'logo-square';
+              sq.dataset.tileType = 'diamond';
+              sq.style.cssText = `
+                width: ${size * 0.7}px;
+                height: ${size * 0.7}px;
+                background: ${red};
+                position: absolute;
+                left: ${x + size * 0.15}px;
+                top: ${y + size * 0.15}px;
+                transform: rotate(45deg);
+              `;
+              col.appendChild(sq);
+              continue;
+            }
+
+            const colorMap = {
+              'cyan1': ['#92f0ed'],
+              'pink1': ['#ebb0ff'],
+              'red': ['#e70006'],
+              'cyan+cyan': ['#92f0ed', '#92f0ed'],
+              'pink+pink': ['#ebb0ff', '#ebb0ff'],
+              'cyan+pink': ['#92f0ed', '#ebb0ff'],
+              'pink+cyan': ['#ebb0ff', '#92f0ed'],
+              'cyan+red': ['#92f0ed', '#e70006'],
+              'pink+red': ['#ebb0ff', '#e70006'],
+              'red+cyan': ['#e70006', '#92f0ed'],
+              'red+pink': ['#e70006', '#ebb0ff'],
+            };
+
+            const colors = colorMap[type] || ['#92f0ed'];
+            let firstColor = true;
+            for (const color of colors) {
+              const sq = document.createElement('div');
+              sq.className = 'logo-square';
+              if (firstColor) { sq.dataset.tileType = type; firstColor = false; }
+              const isRed = color === '#e70006';
+              sq.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                background: ${color};
+                position: absolute;
+                left: ${x}px;
+                top: ${y}px;
+                ${isRed ? '' : 'mix-blend-mode: multiply;'}
+              `;
+              col.appendChild(sq);
+            }
+          }
+        }
+      }
+
+      // Track all tiles by grid position for swapping
+      const tileMap = new Map(); // "r,c" -> { els: [dom elements], x, y }
+
+      fillSquares();
+
+      // Store tile positions after fill
+      function indexTiles() {
+        tileMap.clear();
+        const size = Math.floor(200 / 3);
+        const squares = col.querySelectorAll('.logo-square');
+        squares.forEach(sq => {
+          let x = parseInt(sq.style.left);
+          let y = parseInt(sq.style.top);
+          // Diamonds have offset positions — snap to grid
+          const isDia = sq.style.transform === 'rotate(45deg)';
+          if (isDia) {
+            x = Math.round(x - size * 0.15);
+            y = Math.round(y - size * 0.15);
+          }
+          const c = Math.round(x / size);
+          const r = Math.round(y / size);
+          const key = `${r},${c}`;
+          if (!tileMap.has(key)) tileMap.set(key, { els: [], x, y, r, c, type: null });
+          const tile = tileMap.get(key);
+          tile.els.push(sq);
+          if (sq.dataset.tileType) tile.type = sq.dataset.tileType;
+        });
+      }
+      indexTiles();
+
+      function getVisibleKeys() {
+        const size = Math.floor(200 / 3);
+        const colRect = col.getBoundingClientRect();
+        const keys = [];
+        tileMap.forEach((tile, key) => {
+          const tileTop = colRect.top + tile.y;
+          const tileBot = tileTop + size;
+          if (tileBot > 0 && tileTop < window.innerHeight) {
+            keys.push(key);
+          }
+        });
+        return keys;
+      }
+
+      const swapping = new Set();
+
+      const size = Math.floor(200 / 3);
+
+      function gridPos(r, c) {
+        return { x: c * size, y: r * size };
+      }
+
+      function doSwap(tileA, tileB, keyA, keyB) {
+        if (swapping.has(keyA) || swapping.has(keyB)) return;
+        swapping.add(keyA);
+        swapping.add(keyB);
+
+        const duration = 400;
+
+        // Pick one element from each tile to exchange
+        const idxA = Math.floor(Math.random() * tileA.els.length);
+        const idxB = Math.floor(Math.random() * tileB.els.length);
+        const elA = tileA.els[idxA];
+        const elB = tileB.els[idxB];
+
+        // elA moves to B's grid position, elB moves to A's grid position
+        const posA = gridPos(tileA.r, tileA.c);
+        const posB = gridPos(tileB.r, tileB.c);
+        const isDiamondA = elA.style.transform === 'rotate(45deg)';
+        const isDiamondB = elB.style.transform === 'rotate(45deg)';
+        const dOff = size * 0.15;
+
+        // Transfer elements between tiles
+        tileA.els.splice(idxA, 1, elB);
+        tileB.els.splice(idxB, 1, elA);
+
+        // Animate — diamonds need the centered offset
+        elA.style.transition = `left ${duration}ms ease-in-out, top ${duration}ms ease-in-out`;
+        elA.style.left = (isDiamondA ? posB.x + dOff : posB.x) + 'px';
+        elA.style.top = (isDiamondA ? posB.y + dOff : posB.y) + 'px';
+        elB.style.transition = `left ${duration}ms ease-in-out, top ${duration}ms ease-in-out`;
+        elB.style.left = (isDiamondB ? posA.x + dOff : posA.x) + 'px';
+        elB.style.top = (isDiamondB ? posA.y + dOff : posA.y) + 'px';
+
+        // Cleanup: snap to grid and remove transition
+        function cleanup() {
+          elA.style.transition = ''; elA.style.left = (isDiamondA ? posB.x + dOff : posB.x) + 'px'; elA.style.top = (isDiamondA ? posB.y + dOff : posB.y) + 'px';
+          elB.style.transition = ''; elB.style.left = (isDiamondB ? posA.x + dOff : posA.x) + 'px'; elB.style.top = (isDiamondB ? posA.y + dOff : posA.y) + 'px';
+          swapping.delete(keyA);
+          swapping.delete(keyB);
+        }
+
+        let cleaned = false;
+        const onEnd = () => { if (!cleaned) { cleaned = true; cleanup(); } };
+        elA.addEventListener('transitionend', onEnd, { once: true });
+        setTimeout(onEnd, duration + 100);
+      }
+
+      // Measure clumping: count shared colors between a tile and its neighbours
+      function tileColors(tile) {
+        return tile.els.map(el => el.style.background).filter(Boolean);
+      }
+
+      function clumpScore(key) {
+        const tile = tileMap.get(key);
+        if (!tile) return 0;
+        const tc = tileColors(tile);
+        if (tc.length === 0) return 0;
+        let score = 0;
+        const dirs = [[0,1],[0,-1],[1,0],[-1,0]];
+        for (const [dr, dc] of dirs) {
+          const nKey = `${tile.r + dr},${tile.c + dc}`;
+          const nb = tileMap.get(nKey);
+          if (!nb) continue;
+          const nc = tileColors(nb);
+          for (const c of tc) {
+            if (nc.includes(c)) score++;
+          }
+        }
+        return score;
+      }
+
+      function tileSignature(tile) {
+        return tile.els.map(el => el.style.background + el.style.transform).sort().join('|');
+      }
+
+      let lastSwapKeys = [];
+      let lastMigrateKeys = [];
+      let swapPaused = false;
+      let clickPaused = false;
+
+      function swapTiles() {
+        if (swapPaused) return;
+        const visibleKeys = getVisibleKeys();
+        if (visibleKeys.length < 2) return;
+
+        // Score all visible tiles by clumping, prefer swapping the most clumped
+        const scored = visibleKeys
+          .map(k => ({ key: k, score: clumpScore(k) }))
+          .filter(s => s.score > 0)
+          .sort((a, b) => b.score - a.score);
+
+        // Fall back to random if no clumps
+        const candidates = scored.length > 0
+          ? scored.map(s => s.key)
+          : visibleKeys.sort(() => Math.random() - 0.5);
+
+        for (const keyA of candidates) {
+          const tileA = tileMap.get(keyA);
+          if (!tileA || swapping.has(keyA)) continue;
+
+          // Try neighbours, prefer non-repeat over clump-breaking
+          let bestKey = null, bestScore = -Infinity;
+          const dirs = [[0,1],[0,-1],[1,0],[-1,0]];
+          for (const [dr, dc] of dirs) {
+            const nKey = `${tileA.r + dr},${tileA.c + dc}`;
+            const tileB = tileMap.get(nKey);
+            if (!tileB || swapping.has(nKey) || tileSignature(tileA) === tileSignature(tileB)) continue;
+            const pair = [keyA, nKey].sort().join(':');
+            const wasRecent = lastSwapKeys.includes(pair);
+            const clump = clumpScore(keyA) + clumpScore(nKey);
+            // Heavily penalize repeats
+            const score = wasRecent ? clump - 1000 : clump;
+            if (score > bestScore) {
+              bestScore = score;
+              bestKey = nKey;
+            }
+          }
+
+          if (bestKey) {
+            const pair = [keyA, bestKey].sort().join(':');
+            lastSwapKeys.push(pair);
+            if (lastSwapKeys.length > 5) lastSwapKeys.shift();
+            doSwap(tileA, tileMap.get(bestKey), keyA, bestKey);
+            break;
+          }
+        }
+      }
+
+      setInterval(swapTiles, 3000);
+
+      // Second animation: move one layer from a multi-layer tile to a neighbour
+      function doMigrate(source, target, sourceKey, targetKey) {
+        if (swapping.has(sourceKey) || swapping.has(targetKey)) return;
+        if (source.els.length < 2) return;
+        swapping.add(sourceKey);
+        swapping.add(targetKey);
+
+        const duration = 500;
+        const idx = Math.floor(Math.random() * source.els.length);
+        const el = source.els.splice(idx, 1)[0];
+        target.els.push(el);
+
+        const posTarget = gridPos(target.r, target.c);
+        const isDiamond = el.style.transform === 'rotate(45deg)';
+        const dOff = size * 0.15;
+
+        el.style.transition = `left ${duration}ms ease-in-out, top ${duration}ms ease-in-out`;
+        el.style.left = (isDiamond ? posTarget.x + dOff : posTarget.x) + 'px';
+        el.style.top = (isDiamond ? posTarget.y + dOff : posTarget.y) + 'px';
+
+        let cleaned = false;
+        function cleanup() {
+          if (cleaned) return;
+          cleaned = true;
+          el.style.transition = '';
+          el.style.left = (isDiamond ? posTarget.x + dOff : posTarget.x) + 'px';
+          el.style.top = (isDiamond ? posTarget.y + dOff : posTarget.y) + 'px';
+          swapping.delete(sourceKey);
+          swapping.delete(targetKey);
+        }
+        el.addEventListener('transitionend', cleanup, { once: true });
+        setTimeout(cleanup, duration + 100);
+      }
+
+      function migrateTile() {
+        if (swapPaused) return;
+        const visibleKeys = getVisibleKeys();
+        const multiKeys = visibleKeys
+          .filter(k => {
+            const t = tileMap.get(k);
+            return t && t.els.length >= 2;
+          })
+          .map(k => ({ key: k, score: clumpScore(k) }))
+          .sort((a, b) => b.score - a.score);
+
+        if (multiKeys.length === 0) return;
+
+        for (const { key } of multiKeys) {
+          const source = tileMap.get(key);
+          if (!source || source.els.length < 2 || swapping.has(key)) continue;
+
+          // Find neighbour, prefer non-repeat over clump-breaking
+          let bestKey = null, bestScore = -Infinity;
+          const dirs = [[0,1],[0,-1],[1,0],[-1,0]];
+          for (const [dr, dc] of dirs) {
+            const nKey = `${source.r + dr},${source.c + dc}`;
+            const target = tileMap.get(nKey);
+            if (!target || swapping.has(nKey)) continue;
+            const pair = [key, nKey].sort().join(':');
+            const wasRecent = lastMigrateKeys.includes(pair);
+            const clump = clumpScore(key) + clumpScore(nKey);
+            const score = wasRecent ? clump - 1000 : clump;
+            if (score > bestScore) {
+              bestScore = score;
+              bestKey = nKey;
+            }
+          }
+
+          if (bestKey) {
+            const pair = [key, bestKey].sort().join(':');
+            lastMigrateKeys.push(pair);
+            if (lastMigrateKeys.length > 5) lastMigrateKeys.shift();
+            doMigrate(source, tileMap.get(bestKey), key, bestKey);
+            return;
+          }
+        }
+      }
+
+      setInterval(migrateTile, 5000);
+
+      // Click to swap with random neighbour
+      col.style.pointerEvents = 'auto';
+      col.addEventListener('click', (e) => {
+        const el = e.target.closest('.logo-square');
+        if (!el) return;
+        const x = parseInt(el.style.left);
+        const y = parseInt(el.style.top);
+        const c = Math.round(x / size);
+        const r = Math.round(y / size);
+        const key = `${r},${c}`;
+        const tile = tileMap.get(key);
+        if (!tile || swapping.has(key)) return;
+
+        const dirs = [[0,1],[0,-1],[1,0],[-1,0]].sort(() => Math.random() - 0.5);
+        for (const [dr, dc] of dirs) {
+          const nr = tile.r + dr;
+          const nc = tile.c + dc;
+          if (nr < 0 || nc < 0 || nc > 2) continue;
+          const nKey = `${nr},${nc}`;
+          const nb = tileMap.get(nKey);
+          if (!nb || swapping.has(nKey)) continue;
+          // Verify truly adjacent
+          if (Math.abs(nb.r - tile.r) + Math.abs(nb.c - tile.c) !== 1) continue;
+          doSwap(tile, nb, key, nKey);
+          break;
+        }
+      });
+      // Easter egg: type "HIGH" to rearrange tiles into the logo
+      const highLogo = [
+        // H (rotated 90° CW)
+        ['cyan1',      'cyan+cyan',  'cyan1'],
+        ['empty',      'cyan1',      'empty'],
+        ['cyan1',      'cyan+cyan',  'cyan1'],
+        // I
+        ['red',        'red',        'diamond'],
+        // G
+        ['pink+pink',  'pink1',      'pink+pink'],
+        ['pink1',      'empty',      'pink1'],
+        ['pink+pink',  'triangle',   'pink1'],
+        // H
+        ['cyan1',      'cyan+cyan',  'cyan1'],
+        ['empty',      'cyan1',      'empty'],
+        ['cyan1',      'cyan+cyan',  'cyan1'],
+      ];
+
+      let typedKeys = '';
+      let highActive = false;
+
+      function rebuildTile(key, newType) {
+        const tile = tileMap.get(key);
+        if (!tile) return;
+        tile.type = newType;
+        // Remove old elements
+        tile.els.forEach(el => el.remove());
+        tile.els = [];
+        const x = tile.c * size;
+        const y = tile.r * size;
+
+        if (newType === 'empty') {
+          const sq = document.createElement('div');
+          sq.className = 'logo-square';
+          sq.style.cssText = `width:${size}px;height:${size}px;position:absolute;left:${x}px;top:${y}px;`;
+          col.appendChild(sq);
+          tile.els.push(sq);
+          return;
+        }
+
+        if (newType === 'diamond') {
+          const sq = document.createElement('div');
+          sq.className = 'logo-square';
+          sq.style.cssText = `width:${size*0.7}px;height:${size*0.7}px;background:${red};position:absolute;left:${x+size*0.15}px;top:${y+size*0.15}px;transform:rotate(45deg);`;
+          col.appendChild(sq);
+          tile.els.push(sq);
+          return;
+        }
+
+        if (newType === 'triangle') {
+          const hit = document.createElement('div');
+          hit.className = 'logo-square';
+          hit.style.cssText = `width:${size}px;height:${size}px;position:absolute;left:${x}px;top:${y}px;`;
+          col.appendChild(hit);
+          tile.els.push(hit);
+          const sq = document.createElement('div');
+          sq.className = 'logo-square';
+          sq.style.cssText = `width:${size}px;height:${size}px;background:#ebb0ff;position:absolute;left:${x}px;top:${y}px;clip-path:polygon(0% 0%,0% 100%,100% 100%);mix-blend-mode:multiply;pointer-events:none;`;
+          col.appendChild(sq);
+          tile.els.push(sq);
+          return;
+        }
+
+        const colorMap = {
+          'cyan1':['#92f0ed'],'pink1':['#ebb0ff'],'red':['#e70006'],
+          'cyan+cyan':['#92f0ed','#92f0ed'],'pink+pink':['#ebb0ff','#ebb0ff'],
+          'cyan+pink':['#92f0ed','#ebb0ff'],'pink+cyan':['#ebb0ff','#92f0ed'],
+          'cyan+red':['#92f0ed','#e70006'],'pink+red':['#ebb0ff','#e70006'],
+          'red+cyan':['#e70006','#92f0ed'],'red+pink':['#e70006','#ebb0ff'],
+        };
+        const cls = colorMap[newType] || ['#92f0ed'];
+        for (const color of cls) {
+          const sq = document.createElement('div');
+          sq.className = 'logo-square';
+          const isRed = color === '#e70006';
+          sq.style.cssText = `width:${size}px;height:${size}px;background:${color};position:absolute;left:${x}px;top:${y}px;${isRed?'':'mix-blend-mode:multiply;'}`;
+          col.appendChild(sq);
+          tile.els.push(sq);
+        }
+      }
+
+      function activateHigh() {
+        if (highActive) return;
+        highActive = true;
+        swapPaused = true;
+        clickPaused = true;
+
+        function elColor(el) {
+          const css = el.style.cssText || '';
+          if (css.includes('92f0ed') || css.includes('146, 240, 237')) return 'cyan';
+          if (css.includes('ebb0ff') || css.includes('235, 176, 255')) return 'pink';
+          if (css.includes('e70006') || css.includes('231, 0, 6')) return 'red';
+          return null;
+        }
+
+        // What individual components a logo cell needs
+        function neededComponents(type) {
+          const map = {
+            'empty': [],
+            'cyan1': ['cyan'],
+            'pink1': ['pink'],
+            'red': ['red'],
+            'cyan+cyan': ['cyan', 'cyan'],
+            'pink+pink': ['pink', 'pink'],
+            'diamond': ['diamond'],
+            'triangle': ['triangle'],
+          };
+          return map[type] || [];
+        }
+
+        // Swap one specific element from one tile to a neighbor, sending one back
+        async function buildLogo() {
+          const sleep = ms => new Promise(r => setTimeout(r, ms));
+          const dur = 200;
+          const dOff = size * 0.15;
+
+          // Snapshot all elements
+          const allEls = [];
+          tileMap.forEach((tile) => {
+            tile.els.forEach(el => {
+              const isDia = el.style.transform === 'rotate(45deg)';
+              const hasClip = el.style.clipPath && el.style.clipPath !== 'none';
+              let color = isDia ? 'diamond' : hasClip ? 'triangle' : elColor(el);
+              if (color) allEls.push({ el, color, r: tile.r, c: tile.c });
+            });
+          });
+
+          // What each logo cell needs
+          const needs = [];
+          for (let r = 0; r < 10; r++) {
+            for (let c = 0; c < 3; c++) {
+              for (const comp of neededComponents(highLogo[r][c])) {
+                needs.push({ r, c, color: comp });
+              }
+            }
+          }
+
+          // Match needs to closest elements
+          const usedEls = new Set();
+          const movers = [];
+          for (const need of needs) {
+            let best = null, bestDist = Infinity;
+            for (const item of allEls) {
+              if (usedEls.has(item.el)) continue;
+              if (item.color !== need.color) continue;
+              const dist = Math.abs(item.r - need.r) + Math.abs(item.c - need.c);
+              if (dist < bestDist) { bestDist = dist; best = item; }
+            }
+            if (!best) {
+              // Spawn at bottom
+              const totalRows = Math.ceil(Math.max(document.documentElement.scrollHeight, window.innerHeight) / size);
+              const spawnR = totalRows - 1;
+              const x = need.c * size, y = spawnR * size;
+              const sq = document.createElement('div');
+              sq.className = 'logo-square';
+              if (need.color === 'diamond') sq.style.cssText = `width:${size*0.7}px;height:${size*0.7}px;background:${red};position:absolute;left:${x+dOff}px;top:${y+dOff}px;transform:rotate(45deg);`;
+              else if (need.color === 'triangle') sq.style.cssText = `width:${size}px;height:${size}px;background:#ebb0ff;position:absolute;left:${x}px;top:${y}px;clip-path:polygon(100% 0%,0% 100%,100% 100%);mix-blend-mode:multiply;`;
+              else { const hex = need.color==='cyan'?'#92f0ed':need.color==='pink'?'#ebb0ff':'#e70006'; sq.style.cssText = `width:${size}px;height:${size}px;background:${hex};position:absolute;left:${x}px;top:${y}px;${need.color==='red'?'':'mix-blend-mode:multiply;'}`; }
+              col.appendChild(sq);
+              best = { el: sq, color: need.color, r: spawnR, c: need.c };
+            }
+            usedEls.add(best.el);
+            movers.push({ el: best.el, curR: best.r, curC: best.c, targetR: need.r, targetC: need.c, isDia: best.color === 'diamond', isTri: need.color === 'triangle' });
+          }
+
+          // Also add movers for elements in logo area that don't belong — push them out
+          for (const item of allEls) {
+            if (usedEls.has(item.el)) continue;
+            if (item.r < 10) {
+              usedEls.add(item.el);
+              movers.push({
+                el: item.el,
+                curR: item.r, curC: item.c,
+                targetR: 10 + Math.floor(Math.random() * 5),
+                targetC: item.c,
+                isDia: item.color === 'diamond',
+                isTri: false,
+              });
+            }
+          }
+
+          // Animate one grid step at a time, all movers in parallel
+          let safety = 500;
+          while (movers.some(m => m.curR !== m.targetR || m.curC !== m.targetC) && safety-- > 0) {
+            const moving = [];
+            for (const m of movers) {
+              if (m.curR === m.targetR && m.curC === m.targetC) continue;
+              let nextR = m.curR, nextC = m.curC;
+              if (m.curC !== m.targetC) nextC += m.curC < m.targetC ? 1 : -1;
+              else nextR += m.curR < m.targetR ? 1 : -1;
+              moving.push({ m, nextR, nextC });
+            }
+            for (const { m, nextR, nextC } of moving) {
+              const x = nextC * size, y = nextR * size;
+              m.el.style.transition = `left ${dur}ms ease-in-out, top ${dur}ms ease-in-out`;
+              m.el.style.left = (m.isDia ? x + dOff : x) + 'px';
+              m.el.style.top = (m.isDia ? y + dOff : y) + 'px';
+              m.curR = nextR; m.curC = nextC;
+              if (m.isTri && m.curR === m.targetR && m.curC === m.targetC) {
+                setTimeout(() => {
+                  m.el.style.transition = 'transform 400ms ease-in-out';
+                  m.el.style.transform = 'rotate(90deg)';
+                  m.el.style.transformOrigin = 'center center';
+                  setTimeout(() => { m.el.style.transition = ''; }, 450);
+                }, dur);
+              }
+            }
+            await sleep(dur + 30);
+            for (const { m } of moving) m.el.style.transition = '';
+          }
+
+          indexTiles();
+          swapping.clear();
+          setTimeout(() => { swapPaused = false; }, 3000);
+
+          // Display 5s then reset
+          await sleep(5000);
+          swapPaused = true;
+          for (let r = 0; r < 10; r++) {
+            for (let c = 0; c < 3; c++) {
+              rebuildTile(`${r},${c}`, pickTile());
+            }
+          }
+          indexTiles();
+          setTimeout(() => { swapPaused = false; highActive = false; }, 3000);
+        }
+
+        buildLogo();
+      }
+
+      document.addEventListener('keydown', (e) => {
+        typedKeys += e.key.toLowerCase();
+        if (typedKeys.length > 10) typedKeys = typedKeys.slice(-10);
+        if (typedKeys.endsWith('high')) {
+          typedKeys = '';
+          activateHigh();
+        }
+      });
+    </script>
+
+    <section class="card-category">
+      <div class="card-category-cards">
+        <div class="card-grid">
+          <ProjectCard id="worldr" cover href="https://worldr.net">
+            <div class="worldr-screenshots" slot="bg">
+              <img src="/img/worldr/worldr-timeline.png" alt="" />
+              <img src="/img/worldr/worldr-faction-timeline.png" alt="" />
+              <img src="/img/worldr/worldr-detail-card.png" alt="" />
+              <img src="/img/worldr/worldr-zodiac-settings.png" alt="" />
+              <img src="/img/worldr/worldr-char-events.png" alt="" />
+              <img src="/img/worldr/worldr-properties.png" alt="" />
+              <img src="/img/worldr/worldr-locations-diagram.png" alt="" />
+            </div>
+            <div class="card-inner">
+              <img class="worldr-logo" src="/img/worldr-logo.svg" alt="WORLDR" />
+              <p class="card-desc">Build the worlds behind your stories. A rich database for your characters, places, factions, and way more.</p>
+              <span class="card-btn">Start creating &rarr;</span>
+            </div>
+          </ProjectCard>
+        </div>
+
+        <div class="card-grid">
+          <ProjectCard id="atlas" cover href="https://atlasmundi.net">
+            <img slot="bg" class="atlas-map-bg" src="/img/atlas-map.svg" alt="" />
+            <div class="card-inner">
+              <img class="atlas-logo" src="/img/atlas-mundi-logo.svg" alt="ATLAS MUNDI" />
+              <p class="card-desc">An interactive atlas with lots of interesting data, games and an editor mode to build your maps.</p>
+              <span class="card-btn">Explore the world &rarr;</span>
+            </div>
+          </ProjectCard>
+        </div>
+
+        <div class="card-grid">
+          <ProjectCard id="mundialazo" href="https://mundialazo.net">
+            <div class="card-inner">
+              <img class="mundialazo-logo" src="/img/mundialazologo.svg" alt="Mundialazo" />
+              <p class="card-desc">You like the World Cup? You like data? Oh boy you're in for a treat...</p>
+              <span class="card-btn">Score &rarr;</span>
+            </div>
+          </ProjectCard>
+          <!-- <ProjectCard id="vexillomania" href="https://vexillomania.net">
+            <div class="card-inner">
+              <img class="vexillomania-logo" src="/img/vexillomanialogo.svg" alt="" aria-hidden="true" />
+              <strong class="vexillomania-name">Vexillomania</strong>
+              <p class="card-desc">A catalog of flags from around the world — history, symbolism, and design.</p>
+              <span class="card-btn">Enter &rarr;</span>
+            </div>
+          </ProjectCard> -->
+        </div>
+      </div>
+      <div class="card-category-bracket"><span class="card-category-label">Web Apps</span></div>
+    </section>
+
+    <section class="card-category">
+      <div class="card-category-cards">
+        <div class="card-grid">
+          <ProjectCard id="extravagaria" cover badge="Coming Soon" href="https://extravagaria.net">
+            <div class="card-inner">
+              <strong class="extravagaria-name">Extravagaria</strong>
+              <p class="card-desc">All the puzzle games your heart may desire, with daily challenges and player scoreboards.</p>
+              <span class="card-btn">Play &rarr;</span>
+            </div>
+          </ProjectCard>
+        </div>
+
+        <div class="card-grid">
+          <ProjectCard id="cadavra" cover href="https://cadavra.net">
+            <div class="cadavra-floaters" slot="bg" id="cadavra-floaters"></div>
+            <div class="card-inner">
+              <div class="cadavra-logo-group">
+                <img class="cadavra-skull" src="/img/cadavra-skull.png" alt="" />
+                <span class="cadavra-wordmark">cadavra</span>
+              </div>
+              <p class="card-desc">Each writes a bit... to build a corpse.</p>
+              <span class="card-btn">Welcome &rarr;</span>
+            </div>
+          </ProjectCard>
+        </div>
+
+        <div class="card-grid">
+          <ProjectCard id="redattolo" href="https://redattolo.vercel.app">
+            <div class="card-inner">
+              <img class="redattolo-logo" src="/img/redattolo-logo.svg" alt="Redattolo" />
+              <p class="card-desc">Che articolo è? Scoprilo <span class="redacted">parola</span> per parola...</p>
+              <span class="card-btn">Scopri &rarr;</span>
+            </div>
+          </ProjectCard>
+          <ProjectCard id="chromle" href="https://chromle.vercel.app">
+            <img slot="bg" class="card-bgimg" src="/img/chromle-bg.svg" alt="" />
+            <div class="card-inner">
+              <img class="chromle-logo" src="/img/chromle-logo.svg" alt="Chromle" />
+              <p class="card-desc">See the color, guess the hex.</p>
+              <span class="card-btn">Play &rarr;</span>
+            </div>
+          </ProjectCard>
+        </div>
+
+        <div class="card-grid">
+          <ProjectCard id="yarda" cover href="https://yarda.io">
+            <div class="yarda-carousel" id="yarda-carousel">
+              <div class="yarda-carousel-track">
+                <img src="/img/yarda-slide-1.svg" alt="" />
+                <img src="/img/yarda-preview.svg" alt="" />
+                <img src="/img/yarda-slide-3.svg" alt="" />
+                <img src="/img/yarda-slide-4.svg" alt="" />
+              </div>
+              <div class="yarda-dots">
+                <button class="yarda-dot yarda-dot--active" data-slide="0"></button>
+                <button class="yarda-dot" data-slide="1"></button>
+                <button class="yarda-dot" data-slide="2"></button>
+                <button class="yarda-dot" data-slide="3"></button>
+              </div>
+            </div>
+            <div class="card-inner">
+              <img class="yarda-logo" src="/img/yarda-logo.svg" alt="Yarda" />
+              <p class="card-desc">Build acronyms, then get judged by the other players.</p>
+              <span class="card-btn">Play &rarr;</span>
+            </div>
+          </ProjectCard>
+        </div>
+
+        <div class="card-grid">
+          <ProjectCard id="keydraw" href="https://keydraw.pumo.mp">
+            <img slot="bg" class="card-bgimg" src="/img/keydraw-bg.svg" alt="" />
+            <div class="card-inner">
+              <img class="keydraw-logo" src="/img/keydraw-logo.svg" alt="KeyDraw" />
+              <p class="card-desc">Draw with your keyboard!</p>
+              <span class="card-btn">Draw &rarr;</span>
+            </div>
+          </ProjectCard>
+          <ProjectCard id="shaperino" href="https://shaperino.pumo.mp">
+            <img slot="bg" class="card-bgimg" src="/img/shaperino-bg.svg" alt="" />
+            <div class="card-inner">
+              <img class="shaperino-logo" src="/img/shaperino-logo.svg" alt="Shaperino" />
+              <p class="card-desc">A shape-based clicker.</p>
+              <span class="card-btn">Play &rarr;</span>
+            </div>
+          </ProjectCard>
+        </div>
+      </div>
+      <div class="card-category-bracket"><span class="card-category-label">Web Games</span></div>
+    </section>
+
+    <section class="card-category">
+      <div class="card-category-cards">
+        <div class="card-grid">
+          <ProjectCard id="shipshape" cover>
+            <img class="shipshape-logo" src="/img/shipshape-logo.png" alt="Ship Shape" />
+            <iframe class="shipshape-embed" frameborder="0" src="https://itch.io/embed/2231247?linkback=true&amp;border_width=3&amp;bg_color=ffffff&amp;fg_color=000000&amp;link_color=000000&amp;border_color=000" width="556" height="171"><a href="https://highlyintegratedgayhijink.itch.io/shipshape">Ship Shape by Highly Integrated Gay Hijinks</a></iframe>
+          </ProjectCard>
+        </div>
+      </div>
+      <div class="card-category-bracket"><span class="card-category-label">Playdate Games</span></div>
+    </section>
 
   </main>
 
   <footer>
-    <img class="footer-logo" src="/img/logo-footer.svg" alt="HIJINKS logo" />
     <p class="footer-text">
-      <span class="red">&copy; 2024</span>
+      <span class="red">&copy; 2026</span>
       <span class="cyan"> Highly</span>
       <span class="red"> Integrated</span>
       <span class="pink"> Gay</span>
       <span class="cyan"> Hijinks</span>
     </p>
   </footer>
+
+
+<script>
+  const adjectives = [
+    "Debonair","Unruly","Eerie","Oblong","Feisty","Clean","Boring","Dapper",
+    "Grouchy","Sad","Dirty","Mangy","Professional","Wretched","Gallant",
+    "Peculiar","Sinister","Dreadful","Pompous","Gloomy","Frenzied","Languid",
+    "Spectral","Rotund","Sullen","Brazen","Haggard","Jolly","Ghastly",
+    "Pensive","Mournful","Reckless","Vexed","Corpulent","Famished","Lustrous",
+    "Hideous","Sallow","Feverish","Trembling",
+  ];
+  const nouns = [
+    { noun: "Corvids",    portrait: "/img/portrait-1.png" },
+    { noun: "Sailors",    portrait: "/img/portrait-2.png" },
+    { noun: "Vampires",   portrait: "/img/portrait-3.png" },
+    { noun: "Surgeons",   portrait: "/img/portrait-4.png" },
+    { noun: "Bankers",    portrait: "/img/portrait-5.png" },
+    { noun: "Witches",    portrait: "/img/portrait-6.png" },
+    { noun: "Rats",       portrait: "/img/portrait-7.png" },
+    { noun: "Whores",     portrait: "/img/portrait-8.png" },
+    { noun: "Gentlemen",  portrait: "/img/portrait-9.png" },
+    { noun: "Ghosts",     portrait: "/img/portrait-10.png" },
+  ];
+  const colors = ["#1a5d10","#9c1c1c","#1c409c","#449f9f","#b8882a"];
+
+  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+  function shuffle(arr) { const a = [...arr]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+  const layers = [
+    { cls: "cadavra-float--a", top: "22%", right: "8%" },
+    { cls: "cadavra-float--b", top: "55%", right: "12%" },
+    { cls: "cadavra-float--c", top: "38%", left: "50%" },
+    { cls: "cadavra-float--d", top: "18%", left: "38%" },
+    { cls: "cadavra-float--e", top: "60%", left: "42%" },
+  ];
+
+  const shuffledColors = shuffle(colors);
+
+  const container = document.getElementById("cadavra-floaters");
+  if (container) {
+    layers.forEach((layer, idx) => {
+      const adj = pick(adjectives);
+      const noun = pick(nouns);
+      const color = shuffledColors[idx];
+      const count = Math.floor(Math.random() * 8) + 2;
+
+      const el = document.createElement("div");
+      el.className = `cadavra-float ${layer.cls}`;
+      el.style.top = layer.top;
+      if (layer.right) el.style.right = layer.right;
+      if (layer.left) el.style.left = layer.left;
+
+      el.style.color = color;
+      el.innerHTML = `
+        <div class="cadavra-float-portrait">
+          <img src="${noun.portrait}" alt="" />
+          <div class="cadavra-float-overlay" style="background-color: ${color}"></div>
+        </div>
+        <span class="cadavra-float-text"><strong>${count}</strong> ${adj} ${noun.noun}</span>
+      `;
+      container.appendChild(el);
+    });
+  }
+</script>
+
+<script>
+  {
+    const track = document.querySelector('.yarda-carousel-track');
+    const dots = document.querySelectorAll('.yarda-dot');
+    const slides = track?.querySelectorAll('img');
+    if (track && slides && slides.length) {
+      let current = 0;
+      let timer: ReturnType<typeof setInterval>;
+      slides[0].classList.add('yarda-slide--active');
+
+      function goTo(i: number) {
+        slides![current].classList.remove('yarda-slide--active');
+        dots[current].classList.remove('yarda-dot--active');
+        current = i;
+        slides![current].classList.add('yarda-slide--active');
+        dots[current].classList.add('yarda-dot--active');
+      }
+
+      function startAuto() {
+        timer = setInterval(() => goTo((current + 1) % slides!.length), 4000);
+      }
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          clearInterval(timer);
+          goTo(i);
+          startAuto();
+        });
+      });
+
+      startAuto();
+    }
+  }
+</script>
 
 </Layout>
