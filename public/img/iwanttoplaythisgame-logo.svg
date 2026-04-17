@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 30">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&amp;display=swap');
+  </style>
+  <rect x="0.5" y="0.5" width="219" height="29" rx="2" ry="2" fill="#fff" stroke="#333" stroke-width="1"/>
+  <text x="110" y="20" text-anchor="middle" font-family="'EB Garamond', serif" font-size="16" fill="#333">I want to play this game</text>
+</svg>
