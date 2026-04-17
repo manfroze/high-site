@@ -855,13 +855,12 @@ import '../styles/global.css';
         <div class="card-grid">
           <ProjectCard id="worldr" cover href="https://worldr.net">
             <div class="worldr-screenshots" slot="bg">
+              <img src="/img/worldr/worldr-detail-card.png" alt="" />
               <img src="/img/worldr/worldr-timeline.png" alt="" />
               <img src="/img/worldr/worldr-faction-timeline.png" alt="" />
-              <img src="/img/worldr/worldr-detail-card.png" alt="" />
               <img src="/img/worldr/worldr-zodiac-settings.png" alt="" />
               <img src="/img/worldr/worldr-char-events.png" alt="" />
               <img src="/img/worldr/worldr-properties.png" alt="" />
-              <img src="/img/worldr/worldr-locations-diagram.png" alt="" />
             </div>
             <div class="card-inner">
               <img class="worldr-logo" src="/img/worldr-logo.svg" alt="WORLDR" />
@@ -882,22 +881,33 @@ import '../styles/global.css';
           </ProjectCard>
         </div>
 
-        <div class="card-grid">
-          <ProjectCard id="mundialazo" href="https://mundialazo.net">
-            <div class="card-inner">
-              <img class="mundialazo-logo" src="/img/mundialazologo.svg" alt="Mundialazo" />
-              <p class="card-desc">You like the World Cup? You like data? Oh boy you're in for a treat...</p>
-              <span class="card-btn">Score &rarr;</span>
-            </div>
-          </ProjectCard>
-          <!-- <ProjectCard id="vexillomania" href="https://vexillomania.net">
+        <!-- <div class="card-grid">
+          <ProjectCard id="vexillomania" cover href="https://vexillomania.net">
             <div class="card-inner">
               <img class="vexillomania-logo" src="/img/vexillomanialogo.svg" alt="" aria-hidden="true" />
               <strong class="vexillomania-name">Vexillomania</strong>
               <p class="card-desc">A catalog of flags from around the world — history, symbolism, and design.</p>
               <span class="card-btn">Enter &rarr;</span>
             </div>
-          </ProjectCard> -->
+          </ProjectCard>
+        </div> -->
+
+        <div class="card-grid">
+          <ProjectCard id="mundialazo" href="https://mundialazo.net">
+            <div class="card-inner">
+              <img class="mundialazo-logo" src="/img/mundialazologo.svg" alt="Mundialazo" />
+              <p class="card-desc">You like the World Cup? You like data?<br /> Oh boy you're in for a treat...</p>
+              <span class="card-btn">Score &rarr;</span>
+            </div>
+          </ProjectCard>
+          <ProjectCard id="keydraw" href="https://keydraw.pumo.mp">
+            <img slot="bg" class="card-bgimg" src="/img/keydraw-bg.svg" alt="" />
+            <div class="card-inner">
+              <img class="keydraw-logo" src="/img/keydraw-logo.svg" alt="KeyDraw" />
+              <p class="card-desc">Draw with your keyboard!</p>
+              <span class="card-btn">Draw &rarr;</span>
+            </div>
+          </ProjectCard>
         </div>
       </div>
       <div class="card-category-bracket"><span class="card-category-label">Web Apps</span></div>
@@ -916,40 +926,8 @@ import '../styles/global.css';
         </div>
 
         <div class="card-grid">
-          <ProjectCard id="cadavra" cover href="https://cadavra.net">
-            <div class="cadavra-floaters" slot="bg" id="cadavra-floaters"></div>
-            <div class="card-inner">
-              <div class="cadavra-logo-group">
-                <img class="cadavra-skull" src="/img/cadavra-skull.png" alt="" />
-                <span class="cadavra-wordmark">cadavra</span>
-              </div>
-              <p class="card-desc">Each writes a bit... to build a corpse.</p>
-              <span class="card-btn">Welcome &rarr;</span>
-            </div>
-          </ProjectCard>
-        </div>
-
-        <div class="card-grid">
-          <ProjectCard id="redattolo" href="https://redattolo.vercel.app">
-            <div class="card-inner">
-              <img class="redattolo-logo" src="/img/redattolo-logo.svg" alt="Redattolo" />
-              <p class="card-desc">Che articolo è? Scoprilo <span class="redacted">parola</span> per parola...</p>
-              <span class="card-btn">Scopri &rarr;</span>
-            </div>
-          </ProjectCard>
-          <ProjectCard id="chromle" href="https://chromle.vercel.app">
-            <img slot="bg" class="card-bgimg" src="/img/chromle-bg.svg" alt="" />
-            <div class="card-inner">
-              <img class="chromle-logo" src="/img/chromle-logo.svg" alt="Chromle" />
-              <p class="card-desc">See the color, guess the hex.</p>
-              <span class="card-btn">Play &rarr;</span>
-            </div>
-          </ProjectCard>
-        </div>
-
-        <div class="card-grid">
-          <ProjectCard id="yarda" cover href="https://yarda.io">
-            <div class="yarda-carousel" id="yarda-carousel">
+          <ProjectCard id="yarda" href="https://yarda.io">
+            <div class="yarda-carousel" slot="bg" id="yarda-carousel">
               <div class="yarda-carousel-track">
                 <img src="/img/yarda-slide-1.svg" alt="" />
                 <img src="/img/yarda-preview.svg" alt="" />
@@ -969,15 +947,36 @@ import '../styles/global.css';
               <span class="card-btn">Play &rarr;</span>
             </div>
           </ProjectCard>
+          <ProjectCard id="redattolo" href="https://redattolo.vercel.app">
+            <div class="card-inner">
+              <img class="redattolo-logo" src="/img/redattolo-logo.svg" alt="Redattolo" />
+              <p class="card-desc">Che articolo è? Scoprilo <span class="redacted">parola</span> per parola...</p>
+              <span class="card-btn">Scopri &rarr;</span>
+            </div>
+          </ProjectCard>
         </div>
 
         <div class="card-grid">
-          <ProjectCard id="keydraw" href="https://keydraw.pumo.mp">
-            <img slot="bg" class="card-bgimg" src="/img/keydraw-bg.svg" alt="" />
+          <ProjectCard id="cadavra" cover href="https://cadavra.net">
+            <div class="cadavra-floaters" slot="bg" id="cadavra-floaters"></div>
             <div class="card-inner">
-              <img class="keydraw-logo" src="/img/keydraw-logo.svg" alt="KeyDraw" />
-              <p class="card-desc">Draw with your keyboard!</p>
-              <span class="card-btn">Draw &rarr;</span>
+              <div class="cadavra-logo-group">
+                <img class="cadavra-skull" src="/img/cadavra-skull.png" alt="" />
+                <span class="cadavra-wordmark">cadavra</span>
+              </div>
+              <p class="card-desc">Each writes a bit... to build a corpse.</p>
+              <span class="card-btn">Welcome &rarr;</span>
+            </div>
+          </ProjectCard>
+        </div>
+
+        <div class="card-grid">
+          <ProjectCard id="chromle" href="https://chromle.vercel.app">
+            <img slot="bg" class="card-bgimg" src="/img/chromle-bg.svg" alt="" />
+            <div class="card-inner">
+              <img class="chromle-logo" src="/img/chromle-logo.svg" alt="Chromle" />
+              <p class="card-desc">See the color, guess the hex.</p>
+              <span class="card-btn">Play &rarr;</span>
             </div>
           </ProjectCard>
           <ProjectCard id="shaperino" href="https://shaperino.pumo.mp">
@@ -985,6 +984,22 @@ import '../styles/global.css';
             <div class="card-inner">
               <img class="shaperino-logo" src="/img/shaperino-logo.svg" alt="Shaperino" />
               <p class="card-desc">A shape-based clicker.</p>
+              <span class="card-btn">Play &rarr;</span>
+            </div>
+          </ProjectCard>
+        </div>
+
+        <div class="card-grid">
+          <ProjectCard id="iwanttoplaythisgame" cover href="https://pumo.mp/iwanttoplaythisgame">
+            <div class="iwtptg-log" slot="bg" id="iwtptg-log">
+              <div class="iwtptg-log-content"></div>
+            </div>
+            <div class="card-inner">
+              <svg class="iwanttoplaythisgame-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 26">
+                <rect x="0.5" y="0.5" width="169" height="25" rx="2" ry="2" fill="#fff" stroke="#333" stroke-width="1"/>
+                <text x="85" y="18" text-anchor="middle" font-family="'EB Garamond', serif" font-size="16" fill="#333">I want to play this game</text>
+              </svg>
+              <p class="card-desc">Mentalize. Reify. Pulverize. Purify.</p>
               <span class="card-btn">Play &rarr;</span>
             </div>
           </ProjectCard>
@@ -998,7 +1013,18 @@ import '../styles/global.css';
         <div class="card-grid">
           <ProjectCard id="shipshape" cover>
             <img class="shipshape-logo" src="/img/shipshape-logo.png" alt="Ship Shape" />
-            <iframe class="shipshape-embed" frameborder="0" src="https://itch.io/embed/2231247?linkback=true&amp;border_width=3&amp;bg_color=ffffff&amp;fg_color=000000&amp;link_color=000000&amp;border_color=000" width="556" height="171"><a href="https://highlyintegratedgayhijink.itch.io/shipshape">Ship Shape by Highly Integrated Gay Hijinks</a></iframe>
+            <itch-embed
+              class="shipshape-embed"
+              game-url="https://highlyintegratedgayhijink.itch.io/shipshape"
+              title="Ship Shape"
+              author="Highly Integrated Gay Hijinks"
+              description="You've got to ship the shape.\nMatch the shape. Match the color. Match both. Match one but not the other...??? Oh boy! These rules are utterly insane!\nFollow the rules, mind the timer, and avoid the strikes: five, and you're out!\nCan you reach the more... exotic shapes?"
+              bg-color="#ffffff"
+              fg-color="#000000"
+              link-color="#000000"
+              border-color="#000000"
+              border-width="3"
+            ></itch-embed>
           </ProjectCard>
         </div>
       </div>
@@ -1017,6 +1043,90 @@ import '../styles/global.css';
     </p>
   </footer>
 
+
+<script>
+  class ItchEmbed extends HTMLElement {
+    connectedCallback() {
+      const gameUrl = this.getAttribute('game-url') || '#';
+const title = this.getAttribute('title') || '';
+      const author = this.getAttribute('author') || '';
+      const description = (this.getAttribute('description') || '').replace(/\\n/g, '<br>');
+      const bgColor = this.getAttribute('bg-color') || '#ffffff';
+      const fgColor = this.getAttribute('fg-color') || '#000000';
+      const linkColor = this.getAttribute('link-color') || '#000000';
+      const borderColor = this.getAttribute('border-color') || '#000000';
+      const borderWidth = this.getAttribute('border-width') || '3';
+
+      const shadow = this.attachShadow({ mode: 'open' });
+      shadow.innerHTML = `
+        <style>
+          :host { display: block; }
+          .embed {
+            display: flex;
+            align-items: stretch;
+            width: fit-content;
+            border: ${borderWidth}px solid ${borderColor};
+            border-radius: 3px;
+            background: ${bgColor};
+            color: ${fgColor};
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            box-sizing: border-box;
+          }
+          .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4px;
+            padding: 12px 16px;
+            flex: 1;
+            min-width: 0;
+          }
+          .title {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.2;
+          }
+          .title a {
+            color: ${linkColor};
+            text-decoration: none;
+          }
+          .title a:hover { text-decoration: underline; }
+          .author {
+            font-size: 13px;
+            opacity: 0.7;
+          }
+          .description {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            line-height: 1.4;
+            margin-top: 6px;
+            opacity: 0.8;
+          }
+          .actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 12px;
+          }
+          .actions a { display: inline-block; }
+          .actions img { height: 42px; display: block; }
+        </style>
+        <div class="embed">
+<div class="info">
+${description ? `<div class="description">${description}</div>` : ''}
+          </div>
+        </div>
+        <div class="actions">
+          <a href="${gameUrl}"><img src="/img/badge-itch.svg" alt="Available on itch.io" /></a>
+          <a href="https://play.date/games/ship-shape/"><img src="/img/badge-playdate.svg" alt="Buy it in Catalog" /></a>
+        </div>
+      `;
+    }
+  }
+  customElements.define('itch-embed', ItchEmbed);
+</script>
 
 <script>
   const adjectives = [
@@ -1114,6 +1224,64 @@ import '../styles/global.css';
       });
 
       startAuto();
+    }
+  }
+</script>
+
+<script>
+  {
+    const entries = [
+      // Facts (log messages)
+      { text: "You want to play this game.", color: "firebrick", btn: "Mentalize", btnColor: "navy" },
+      { text: "You mentalized something.", color: "navy", btn: "Mentalize", btnColor: "navy" },
+      { text: "You reified something.", color: "forestgreen", btn: "Mentalize", btnColor: "navy" },
+      { text: "You pulverized something.", color: "DimGray", btn: "Mentalize", btnColor: "navy" },
+      { text: "You reified a lot of stuff.", color: "forestgreen", btn: "Mentalize", btnColor: "navy" },
+      { text: "You purified something.", color: "Goldenrod", btn: "Mentalize", btnColor: "navy" },
+      { text: "You alchemized something.", color: "rgb(2, 35, 14)", btn: "Mentalize", btnColor: "navy" },
+      { text: "You destroyed something.", color: "rgb(84, 79, 72)", btn: "Mentalize", btnColor: "navy" },
+      { text: "You just got lucky.", color: "rgb(0, 205, 103)", btn: "Mentalize", btnColor: "navy" },
+      { text: "You have unlocked a machine.", color: "Brown", btn: "Mentalize", btnColor: "navy" },
+      { text: "You have pressed F to pay respect.", color: "Blue", btn: "Mentalize", btnColor: "navy" },
+      // Ideas
+      { text: "The idea of wanting to play this game", color: "firebrick", btn: "Reify", btnColor: "forestgreen" },
+      { text: "The idea of mentalizing something", color: "navy", btn: "Reify", btnColor: "forestgreen" },
+      { text: "The idea of reifying something", color: "forestgreen", btn: "Reify", btnColor: "forestgreen" },
+      { text: "The idea of pulverizing something", color: "DimGray", btn: "Reify", btnColor: "forestgreen" },
+      { text: "The idea of purifying something", color: "Goldenrod", btn: "Reify", btnColor: "forestgreen" },
+      { text: "The idea of destroying something", color: "rgb(84, 79, 72)", btn: "Reify", btnColor: "forestgreen" },
+      // Things
+      { text: "The material reification of the idea of wanting to play this game", color: "firebrick", btn: "Pulverize", btnColor: "DimGray" },
+      { text: "The material reification of the idea of mentalizing", color: "navy", btn: "Pulverize", btnColor: "DimGray" },
+      { text: "The material reification of the idea of reifying", color: "forestgreen", btn: "Pulverize", btnColor: "DimGray" },
+    ];
+
+    const content = document.querySelector('.iwtptg-log-content');
+    if (content) {
+      const maxVisible = 20;
+
+      function addEntry() {
+        const entry = entries[Math.floor(Math.random() * entries.length)];
+        const el = document.createElement('div');
+        el.className = 'iwtptg-log-item';
+        el.innerHTML = `<span style="color:${entry.color}">${entry.text}</span><span class="iwtptg-btn" style="color:${entry.btnColor}">${entry.btn}</span>`;
+        content.prepend(el);
+
+        while (content.children.length > maxVisible) {
+          content.removeChild(content.lastChild!);
+        }
+      }
+
+      for (let i = 0; i < 5; i++) addEntry();
+
+      function scheduleNext() {
+        const delay = 800 + Math.random() * 2200;
+        setTimeout(() => {
+          addEntry();
+          scheduleNext();
+        }, delay);
+      }
+      scheduleNext();
     }
   }
 </script>

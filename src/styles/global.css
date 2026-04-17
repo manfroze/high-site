@@ -8,7 +8,7 @@
 
 html, body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 /* ---- Header ---- */
@@ -19,6 +19,7 @@ header {
   justify-content: space-between;
   overflow: hidden;
   height: 150px;
+
 }
 
 .header-left {
@@ -229,7 +230,7 @@ main > *:not(.card-category):not(.icon-column) {
 .card-category-label {
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
@@ -305,7 +306,7 @@ main > *:not(.card-category):not(.icon-column) {
 }
 
 .card-desc {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.5;
@@ -320,7 +321,7 @@ main > *:not(.card-category):not(.icon-column) {
 }
 
 .card-tags span {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 11px;
   font-weight: 500;
   padding: 2px 8px;
@@ -333,7 +334,7 @@ main > *:not(.card-category):not(.icon-column) {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13px;
   font-weight: 600;
   padding: 6px 14px;
@@ -391,7 +392,7 @@ main > *:not(.card-category):not(.icon-column) {
   object-position: center top;
   filter: brightness(1.3) saturate(1.1);
   opacity: 0;
-  animation: worldr-fade 42s ease-in-out infinite;
+  animation: worldr-fade 36s ease-in-out infinite;
 }
 
 .worldr-screenshots img:nth-child(1) { animation-delay: 0s; }
@@ -400,17 +401,16 @@ main > *:not(.card-category):not(.icon-column) {
 .worldr-screenshots img:nth-child(4) { animation-delay: 18s; }
 .worldr-screenshots img:nth-child(5) { animation-delay: 24s; }
 .worldr-screenshots img:nth-child(6) { animation-delay: 30s; }
-.worldr-screenshots img:nth-child(7) { animation-delay: 36s; }
 
-/* 42s total, 7 images staggered 6s apart.
-   Each visible ~16% = 6.7s, overlapping ~1.7% with neighbours
+/* 36s total, 6 images staggered 6s apart.
+   Each visible ~18.6% = 6.7s, overlapping ~2% with neighbours
    so the box is never empty. */
 @keyframes worldr-fade {
   0%            { opacity: 0; object-position: center top; }
-  1.2%          { opacity: 1; object-position: center top; }
-  13%           { opacity: 1; object-position: center bottom; }
-  15.9%         { opacity: 0; object-position: center bottom; }
-  16%, 100%     { opacity: 0; object-position: center top; }
+  1.4%          { opacity: 1; object-position: center top; }
+  15.3%         { opacity: 1; object-position: center bottom; }
+  18.6%         { opacity: 0; object-position: center bottom; }
+  18.7%, 100%   { opacity: 0; object-position: center top; }
 }
 
 
@@ -435,7 +435,7 @@ main > *:not(.card-category):not(.icon-column) {
 }
 
 #yarda {
-  background: linear-gradient(to right, #2ac53a, #f9f9f0);
+  background: #f9f9f0;
 }
 
 #redattolo {
@@ -468,6 +468,50 @@ main > *:not(.card-category):not(.icon-column) {
 #shaperino {
   background: #DDD;
 }
+
+#iwanttoplaythisgame {
+  background: #F1F1F0;
+}
+#iwanttoplaythisgame .card-btn { background: #333; color: #fff; }
+
+/* ---- IWTPTG facts log ---- */
+.iwtptg-log {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  z-index: 1;
+  font-family: 'EB Garamond', serif;
+}
+.iwtptg-log-content {
+  overflow: hidden;
+  padding: 48px 12px 0;
+}
+.iwtptg-log-item {
+  font-size: 14px;
+  margin-bottom: 4px;
+  animation: iwtptg-fade-in 0.3s ease;
+}
+.iwtptg-log-item .iwtptg-btn {
+  display: inline-block;
+  border: 1px solid #333;
+  border-radius: 2px;
+  padding: 1px 5px;
+  background: #fff;
+  font-size: 12px;
+  font-family: 'EB Garamond', serif;
+  margin-left: 5px;
+}
+@keyframes iwtptg-fade-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.iwanttoplaythisgame-logo { height: 30px; width: auto; }
 #shaperino .card-bgimg {
   left: auto;
   right: 0;
@@ -495,7 +539,7 @@ main > *:not(.card-category):not(.icon-column) {
 #extravagaria .card-desc  { color: rgba(255,255,255,0.35); }
 #extravagaria .card-tags span { color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); }
 
-#yarda .card-desc   { color: rgba(0,50,10,0.65); }
+#yarda .card-desc   { color: rgba(0,50,10,0.65); background: #2ac53a; padding: 4px 8px; border-radius: 4px; }
 #yarda .card-tags span  { color: rgba(0,50,10,0.55); background: rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.12); }
 
 #shipshape .card-desc  { color: #333; }
@@ -523,19 +567,16 @@ main > *:not(.card-category):not(.icon-column) {
 .atlas-logo     { height: 36px; width: auto; }
 .mundialazo-logo { height: 46px; width: auto; }
 .vexillomania-logo { height: 32px; width: auto; }
-.yarda-logo     { height: 36px; width: auto; }
+.yarda-logo     { height: 36px; width: auto; background: #2ac53a; padding: 8px 12px; border-radius: 4px; }
 
 /* ---- Yarda carousel ---- */
 .yarda-carousel {
   position: absolute;
-  right: 16px;
-  top: 12px;
-  bottom: 12px;
-  width: 45%;
+  inset: 12px;
   display: flex;
   flex-direction: column;
   pointer-events: auto;
-  z-index: 2;
+  z-index: 1;
 }
 
 .yarda-carousel-track {
@@ -636,7 +677,7 @@ main > *:not(.card-category):not(.icon-column) {
 .cadavra-skull {
   height: 44px;
   width: auto;
-  mix-blend-mode: multiply;
+  filter: sepia(1) saturate(2) brightness(0.6) hue-rotate(345deg);
 }
 
 .cadavra-wordmark {
@@ -672,7 +713,6 @@ main > *:not(.card-category):not(.icon-column) {
   width: 48px;
   height: 48px;
   flex-shrink: 0;
-  background: #fbfbfb;
 }
 
 .cadavra-float-portrait img {
@@ -850,7 +890,7 @@ footer {
   color: #333;
   margin: 0;
   line-height: 24px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 /* ---- Color utilities ---- */
