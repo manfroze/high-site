@@ -23,9 +23,8 @@ import '../styles/global.css';
             <a href="mailto:highlyintegratedgayhijinks@gmail.com" aria-label="Email"><img src="/img/icon-email.svg" alt="Email" /></a>
             <a href="https://highlyintegratedgayhijink.itch.io/" aria-label="Itch.io"><img src="/img/icon-itch.svg" alt="Itch.io" /></a>
             <a href="https://www.patreon.com/HighlyIntegratedGayHijinks" aria-label="Patreon"><img src="/img/icon-patreon.svg" alt="Patreon" /></a>
-            <a href="https://discord.gg/HIGH" aria-label="Discord"><img src="/img/icon-discord.svg" alt="Discord" /></a>
+            <a href="https://discord.gg/H48SPgVdUF" aria-label="Discord"><img src="/img/icon-discord.svg" alt="Discord" /></a>
             <a href="https://t.me/hijink" aria-label="Telegram"><img src="/img/icon-telegram.svg" alt="Telegram" /></a>
-            <a href="https://bsky.app/profile/highjinks.bsky.social" aria-label="Bluesky"><img src="/img/icon-bluesky.svg" alt="Bluesky" /></a>
           </div>
           <p class="tagline">
             <strong><span class="cyan">Highly</span> <span class="red">Integrated</span> <span class="pink">Gay</span> <span class="cyan">Hijinks</span></strong> is our creative lab.<br />
@@ -875,7 +874,7 @@ import '../styles/global.css';
             <img slot="bg" class="atlas-map-bg" src="/img/atlas-map.svg" alt="" />
             <div class="card-inner">
               <img class="atlas-logo" src="/img/atlas-mundi-logo.svg" alt="ATLAS MUNDI" />
-              <p class="card-desc">An interactive atlas with lots of interesting data, games and an editor mode to build your maps.</p>
+              <p class="card-desc">An interactive atlas with lots of interesting data.</p>
               <span class="card-btn">Explore the world &rarr;</span>
             </div>
           </ProjectCard>
@@ -900,14 +899,6 @@ import '../styles/global.css';
               <span class="card-btn">Score &rarr;</span>
             </div>
           </ProjectCard> -->
-          <ProjectCard id="keydraw" href="https://keydraw.pumo.mp">
-            <img slot="bg" class="card-bgimg" src="/img/keydraw-bg.svg" alt="" />
-            <div class="card-inner">
-              <img class="keydraw-logo" src="/img/keydraw-logo.svg" alt="KeyDraw" />
-              <p class="card-desc">Draw with your keyboard!</p>
-              <span class="card-btn">Draw &rarr;</span>
-            </div>
-          </ProjectCard>
         </div>
       </div>
       <div class="card-category-bracket"><span class="card-category-label">Web Apps</span></div>
@@ -916,9 +907,19 @@ import '../styles/global.css';
     <section class="card-category">
       <div class="card-category-cards">
         <div class="card-grid">
-          <ProjectCard id="extravagaria" cover badge="Coming Soon" href="https://extravagaria.net">
+          <ProjectCard id="extravagaria" cover href="https://extravagaria.net">
+            <canvas id="extravagaria-gradient" class="extravagaria-gradient" slot="bg" data-transition-in></canvas>
+            <div class="extravagaria-cards" slot="bg">
+              <img src="/img/extravagaria/card-beexagon.png" alt="" />
+              <img src="/img/extravagaria/card-wordoku.png" alt="" />
+              <img src="/img/extravagaria/card-shufflind.png" alt="" />
+              <img src="/img/extravagaria/card-wisteria.png" alt="" />
+              <img src="/img/extravagaria/card-ragaman.png" alt="" />
+              <img src="/img/extravagaria/card-impile.png" alt="" />
+              <img src="/img/extravagaria/card-conquest.png" alt="" />
+            </div>
             <div class="card-inner">
-              <strong class="extravagaria-name">Extravagaria</strong>
+              <span class="extravagaria-logo-wrap"><img class="extravagaria-logo" src="/img/extravagaria-logo.svg" alt="Extravagaria" /></span>
               <p class="card-desc">All the puzzle games your heart may desire, with daily challenges and player scoreboards.</p>
               <span class="card-btn">Play &rarr;</span>
             </div>
@@ -1031,6 +1032,22 @@ import '../styles/global.css';
       <div class="card-category-bracket"><span class="card-category-label">Playdate Games</span></div>
     </section>
 
+    <section class="card-category">
+      <div class="card-category-cards">
+        <div class="card-grid">
+          <ProjectCard id="keydraw" href="https://keydraw.pumo.mp">
+            <img slot="bg" class="card-bgimg" src="/img/keydraw-bg.svg" alt="" />
+            <div class="card-inner">
+              <img class="keydraw-logo" src="/img/keydraw-logo.svg" alt="KeyDraw" />
+              <p class="card-desc">Draw with your keyboard!</p>
+              <span class="card-btn">Draw &rarr;</span>
+            </div>
+          </ProjectCard>
+        </div>
+      </div>
+      <div class="card-category-bracket"><span class="card-category-label">Experiments</span></div>
+    </section>
+
   </main>
 
   <footer>
@@ -1043,6 +1060,12 @@ import '../styles/global.css';
     </p>
   </footer>
 
+
+<script>
+  import { Gradient } from '../scripts/gradient.js';
+  const gradient = new Gradient();
+  gradient.initGradient('#extravagaria-gradient');
+</script>
 
 <script>
   class ItchEmbed extends HTMLElement {
