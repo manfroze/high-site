@@ -851,7 +851,7 @@ import '../styles/global.css';
 
     <section class="card-category">
       <div class="card-category-cards">
-        <!-- <div class="card-grid">
+        <div class="card-grid">
           <ProjectCard id="worldr" cover href="https://worldr.net">
             <div class="worldr-screenshots" slot="bg">
               <img src="/img/worldr/worldr-detail-card.png" alt="" />
@@ -867,7 +867,7 @@ import '../styles/global.css';
               <span class="card-btn">Start creating &rarr;</span>
             </div>
           </ProjectCard>
-        </div> -->
+        </div>
 
         <div class="card-grid">
           <ProjectCard id="atlas" cover href="https://atlasmundi.net">
@@ -891,15 +891,15 @@ import '../styles/global.css';
           </ProjectCard>
         </div> -->
 
-        <div class="card-grid">
-          <!-- <ProjectCard id="mundialazo" href="https://mundialazo.net">
+        <!-- <div class="card-grid">
+          <ProjectCard id="mundialazo" href="https://mundialazo.net">
             <div class="card-inner">
               <img class="mundialazo-logo" src="/img/mundialazologo.svg" alt="Mundialazo" />
               <p class="card-desc">You like the World Cup? You like data?<br /> Oh boy you're in for a treat...</p>
               <span class="card-btn">Score &rarr;</span>
             </div>
-          </ProjectCard> -->
-        </div>
+          </ProjectCard>
+        </div> -->
       </div>
       <div class="card-category-bracket"><span class="card-category-label">Web Apps</span></div>
     </section>
@@ -910,13 +910,13 @@ import '../styles/global.css';
           <ProjectCard id="extravagaria" cover href="https://extravagaria.net">
             <canvas id="extravagaria-gradient" class="extravagaria-gradient" slot="bg" data-transition-in></canvas>
             <div class="extravagaria-cards" slot="bg">
-              <img src="/img/extravagaria/card-beexagon.png" alt="" />
-              <img src="/img/extravagaria/card-wordoku.png" alt="" />
-              <img src="/img/extravagaria/card-shufflind.png" alt="" />
-              <img src="/img/extravagaria/card-wisteria.png" alt="" />
-              <img src="/img/extravagaria/card-ragaman.png" alt="" />
-              <img src="/img/extravagaria/card-impile.png" alt="" />
-              <img src="/img/extravagaria/card-conquest.png" alt="" />
+              <img src="/img/extravagaria/card-beexagon.webp" alt="" loading="lazy" decoding="async" />
+              <img src="/img/extravagaria/card-wordoku.webp" alt="" loading="lazy" decoding="async" />
+              <img src="/img/extravagaria/card-shufflind.webp" alt="" loading="lazy" decoding="async" />
+              <img src="/img/extravagaria/card-wisteria.webp" alt="" loading="lazy" decoding="async" />
+              <img src="/img/extravagaria/card-ragaman.webp" alt="" loading="lazy" decoding="async" />
+              <img src="/img/extravagaria/card-impile.webp" alt="" loading="lazy" decoding="async" />
+              <img src="/img/extravagaria/card-conquest.webp" alt="" loading="lazy" decoding="async" />
             </div>
             <div class="card-inner">
               <span class="extravagaria-logo-wrap"><img class="extravagaria-logo" src="/img/extravagaria-logo.svg" alt="Extravagaria" /></span>
@@ -962,7 +962,7 @@ import '../styles/global.css';
             <div class="cadavra-floaters" slot="bg" id="cadavra-floaters"></div>
             <div class="card-inner">
               <div class="cadavra-logo-group">
-                <img class="cadavra-skull" src="/img/cadavra-skull.png" alt="" />
+                <img class="cadavra-skull" src="/img/cadavra-skull.webp" alt="" />
                 <span class="cadavra-wordmark">cadavra</span>
               </div>
               <p class="card-desc">Each writes a bit... to build a corpse.</p>
@@ -1013,7 +1013,7 @@ import '../styles/global.css';
       <div class="card-category-cards">
         <div class="card-grid">
           <ProjectCard id="shipshape" cover>
-            <img class="shipshape-logo" src="/img/shipshape-logo.png" alt="Ship Shape" />
+            <img class="shipshape-logo" src="/img/shipshape-logo.webp" alt="Ship Shape" />
             <itch-embed
               class="shipshape-embed"
               game-url="https://highlyintegratedgayhijink.itch.io/shipshape"
@@ -1063,8 +1063,26 @@ import '../styles/global.css';
 
 <script>
   import { Gradient } from '../scripts/gradient.js';
-  const gradient = new Gradient();
-  gradient.initGradient('#extravagaria-gradient');
+  const canvas = document.querySelector('#extravagaria-gradient');
+  if (canvas) {
+    const gradient = new Gradient();
+    gradient.initGradient('#extravagaria-gradient');
+
+    // Only run the WebGL animation while the card is on (or near) screen —
+    // it starts below the fold, so this avoids wasted GPU/CPU on load.
+    let visible = !('IntersectionObserver' in window);
+    let ready = false;
+    const apply = () => { if (ready) { visible ? gradient.play() : gradient.pause(); } };
+    const poll = setInterval(() => {
+      if (canvas.classList.contains('isLoaded')) { ready = true; clearInterval(poll); apply(); }
+    }, 100);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        visible = entries.some((e) => e.isIntersecting);
+        apply();
+      }, { rootMargin: '200px' }).observe(canvas);
+    }
+  }
 </script>
 
 <script>
@@ -1161,16 +1179,16 @@ ${description ? `<div class="description">${description}</div>` : ''}
     "Hideous","Sallow","Feverish","Trembling",
   ];
   const nouns = [
-    { noun: "Corvids",    portrait: "/img/portrait-1.png" },
-    { noun: "Sailors",    portrait: "/img/portrait-2.png" },
-    { noun: "Vampires",   portrait: "/img/portrait-3.png" },
-    { noun: "Surgeons",   portrait: "/img/portrait-4.png" },
-    { noun: "Bankers",    portrait: "/img/portrait-5.png" },
-    { noun: "Witches",    portrait: "/img/portrait-6.png" },
-    { noun: "Rats",       portrait: "/img/portrait-7.png" },
-    { noun: "Whores",     portrait: "/img/portrait-8.png" },
-    { noun: "Gentlemen",  portrait: "/img/portrait-9.png" },
-    { noun: "Ghosts",     portrait: "/img/portrait-10.png" },
+    { noun: "Corvids",    portrait: "/img/portrait-1.webp" },
+    { noun: "Sailors",    portrait: "/img/portrait-2.webp" },
+    { noun: "Vampires",   portrait: "/img/portrait-3.webp" },
+    { noun: "Surgeons",   portrait: "/img/portrait-4.webp" },
+    { noun: "Bankers",    portrait: "/img/portrait-5.webp" },
+    { noun: "Witches",    portrait: "/img/portrait-6.webp" },
+    { noun: "Rats",       portrait: "/img/portrait-7.webp" },
+    { noun: "Whores",     portrait: "/img/portrait-8.webp" },
+    { noun: "Gentlemen",  portrait: "/img/portrait-9.webp" },
+    { noun: "Ghosts",     portrait: "/img/portrait-10.webp" },
   ];
   const colors = ["#1a5d10","#9c1c1c","#1c409c","#449f9f","#b8882a"];
 
@@ -1204,7 +1222,7 @@ ${description ? `<div class="description">${description}</div>` : ''}
       el.style.color = color;
       el.innerHTML = `
         <div class="cadavra-float-portrait">
-          <img src="${noun.portrait}" alt="" />
+          <img src="${noun.portrait}" alt="" loading="lazy" decoding="async" />
           <div class="cadavra-float-overlay" style="background-color: ${color}"></div>
         </div>
         <span class="cadavra-float-text"><strong>${count}</strong> ${adj} ${noun.noun}</span>
