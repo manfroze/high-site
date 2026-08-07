@@ -25,6 +25,7 @@ import '../styles/global.css';
             <a href="https://www.patreon.com/HighlyIntegratedGayHijinks" aria-label="Patreon"><img src="/img/icon-patreon.svg" alt="Patreon" /></a>
             <a href="https://discord.gg/H48SPgVdUF" aria-label="Discord"><img src="/img/icon-discord.svg" alt="Discord" /></a>
             <a href="https://t.me/hijink" aria-label="Telegram"><img src="/img/icon-telegram.svg" alt="Telegram" /></a>
+            <a href="https://mastodon.gamedev.place/@high" aria-label="Mastodon"><img src="/img/icon-mastodon.svg" alt="Mastodon" /></a>
           </div>
           <p class="tagline">
             <strong><span class="cyan">Highly</span> <span class="red">Integrated</span> <span class="pink">Gay</span> <span class="cyan">Hijinks</span></strong> is our creative lab.<br />
@@ -851,7 +852,7 @@ import '../styles/global.css';
 
     <section class="card-category">
       <div class="card-category-cards">
-        <div class="card-grid">
+        <!-- <div class="card-grid">
           <ProjectCard id="worldr" cover href="https://worldr.net">
             <div class="worldr-screenshots" slot="bg">
               <img src="/img/worldr/worldr-detail-card.png" alt="" />
@@ -867,7 +868,7 @@ import '../styles/global.css';
               <span class="card-btn">Start creating &rarr;</span>
             </div>
           </ProjectCard>
-        </div>
+        </div> -->
 
         <div class="card-grid">
           <ProjectCard id="atlas" cover href="https://atlasmundi.net">
@@ -900,12 +901,7 @@ import '../styles/global.css';
             </div>
           </ProjectCard>
         </div> -->
-      </div>
-      <div class="card-category-bracket"><span class="card-category-label">Web Apps</span></div>
-    </section>
 
-    <section class="card-category">
-      <div class="card-category-cards">
         <div class="card-grid">
           <ProjectCard id="extravagaria" cover href="https://extravagaria.net">
             <canvas id="extravagaria-gradient" class="extravagaria-gradient" slot="bg" data-transition-in></canvas>
@@ -922,6 +918,20 @@ import '../styles/global.css';
               <span class="extravagaria-logo-wrap"><img class="extravagaria-logo" src="/img/extravagaria-logo.svg" alt="Extravagaria" /></span>
               <p class="card-desc">All the puzzle games your heart may desire, with daily challenges and player scoreboards.</p>
               <span class="card-btn">Play &rarr;</span>
+            </div>
+          </ProjectCard>
+        </div>
+
+        <div class="card-grid">
+          <ProjectCard id="cadavra" cover href="https://cadavra.net">
+            <div class="cadavra-floaters" slot="bg" id="cadavra-floaters"></div>
+            <div class="card-inner">
+              <div class="cadavra-logo-group">
+                <img class="cadavra-skull" src="/img/cadavra-skull.webp" alt="" />
+                <span class="cadavra-wordmark">cadavra</span>
+              </div>
+              <p class="card-desc">Each writes a bit... to build a corpse.</p>
+              <span class="card-btn">Welcome &rarr;</span>
             </div>
           </ProjectCard>
         </div>
@@ -957,39 +967,6 @@ import '../styles/global.css';
           </ProjectCard>
         </div>
 
-        <div class="card-grid">
-          <ProjectCard id="cadavra" cover href="https://cadavra.net">
-            <div class="cadavra-floaters" slot="bg" id="cadavra-floaters"></div>
-            <div class="card-inner">
-              <div class="cadavra-logo-group">
-                <img class="cadavra-skull" src="/img/cadavra-skull.webp" alt="" />
-                <span class="cadavra-wordmark">cadavra</span>
-              </div>
-              <p class="card-desc">Each writes a bit... to build a corpse.</p>
-              <span class="card-btn">Welcome &rarr;</span>
-            </div>
-          </ProjectCard>
-        </div>
-
-        <div class="card-grid">
-          <ProjectCard id="chromle" href="https://chromle.vercel.app">
-            <img slot="bg" class="card-bgimg" src="/img/chromle-bg.svg" alt="" />
-            <div class="card-inner">
-              <img class="chromle-logo" src="/img/chromle-logo.svg" alt="Chromle" />
-              <p class="card-desc">See the color, guess the hex.</p>
-              <span class="card-btn">Play &rarr;</span>
-            </div>
-          </ProjectCard>
-          <!-- <ProjectCard id="shaperino" href="https://shaperino.pumo.mp">
-            <img slot="bg" class="card-bgimg" src="/img/shaperino-bg.svg" alt="" />
-            <div class="card-inner">
-              <img class="shaperino-logo" src="/img/shaperino-logo.svg" alt="Shaperino" />
-              <p class="card-desc">A shape-based clicker.</p>
-              <span class="card-btn">Play &rarr;</span>
-            </div>
-          </ProjectCard> -->
-        </div>
-
         <!-- <div class="card-grid">
           <ProjectCard id="iwanttoplaythisgame" cover href="https://pumo.mp/iwanttoplaythisgame">
             <div class="iwtptg-log" slot="bg" id="iwtptg-log">
@@ -1005,12 +982,7 @@ import '../styles/global.css';
             </div>
           </ProjectCard>
         </div> -->
-      </div>
-      <div class="card-category-bracket"><span class="card-category-label">Web Games</span></div>
-    </section>
 
-    <section class="card-category">
-      <div class="card-category-cards">
         <div class="card-grid">
           <ProjectCard id="shipshape" cover>
             <img class="shipshape-logo" src="/img/shipshape-logo.webp" alt="Ship Shape" />
@@ -1028,13 +1000,16 @@ import '../styles/global.css';
             ></itch-embed>
           </ProjectCard>
         </div>
-      </div>
-      <div class="card-category-bracket"><span class="card-category-label">Playdate Games</span></div>
-    </section>
 
-    <section class="card-category">
-      <div class="card-category-cards">
         <div class="card-grid">
+          <ProjectCard id="chromle" href="https://chromle.vercel.app">
+            <img slot="bg" class="card-bgimg" src="/img/chromle-bg.svg" alt="" />
+            <div class="card-inner">
+              <img class="chromle-logo" src="/img/chromle-logo.svg" alt="Chromle" />
+              <p class="card-desc">See the color, guess the hex.</p>
+              <span class="card-btn">Play &rarr;</span>
+            </div>
+          </ProjectCard>
           <ProjectCard id="keydraw" href="https://keydraw.pumo.mp">
             <img slot="bg" class="card-bgimg" src="/img/keydraw-bg.svg" alt="" />
             <div class="card-inner">
@@ -1043,9 +1018,16 @@ import '../styles/global.css';
               <span class="card-btn">Draw &rarr;</span>
             </div>
           </ProjectCard>
+          <!-- <ProjectCard id="shaperino" href="https://shaperino.pumo.mp">
+            <img slot="bg" class="card-bgimg" src="/img/shaperino-bg.svg" alt="" />
+            <div class="card-inner">
+              <img class="shaperino-logo" src="/img/shaperino-logo.svg" alt="Shaperino" />
+              <p class="card-desc">A shape-based clicker.</p>
+              <span class="card-btn">Play &rarr;</span>
+            </div>
+          </ProjectCard> -->
         </div>
       </div>
-      <div class="card-category-bracket"><span class="card-category-label">Experiments</span></div>
     </section>
 
   </main>
