@@ -923,6 +923,21 @@ import '../styles/global.css';
           </ProjectCard>
         </div>
 
+        <!-- No href: ProjectCard renders it as a full-card <a> overlay,
+             which would swallow clicks on the email input. -->
+        <div class="card-grid">
+          <ProjectCard id="newsletter">
+            <div class="newsletter-frame" slot="bg" aria-hidden="true"></div>
+            <div class="card-inner">
+              <strong class="newsletter-title">
+                <span class="cyan">Get</span> <span class="red">the</span> <span class="pink">next</span> <span class="cyan">one</span>
+              </strong>
+              <p class="card-desc">A few emails a year, when we ship something. That's the whole promise.</p>
+              <NewsletterForm username="hijinks" />
+            </div>
+          </ProjectCard>
+        </div>
+
         <div class="card-grid">
           <ProjectCard id="cadavra" cover href="https://cadavra.net">
             <div class="cadavra-floaters" slot="bg" id="cadavra-floaters"></div>
@@ -1029,19 +1044,6 @@ import '../styles/global.css';
           </ProjectCard> -->
         </div>
 
-        <!-- No href: ProjectCard renders it as a full-card <a> overlay,
-             which would swallow clicks on the email input. -->
-        <div class="card-grid">
-          <ProjectCard id="newsletter">
-            <div class="card-inner">
-              <strong class="newsletter-title">
-                <span class="cyan">Get</span> <span class="red">the</span> <span class="pink">next</span> <span class="cyan">one</span>
-              </strong>
-              <p class="card-desc">A few emails a year, when we ship something. That's the whole promise.</p>
-              <NewsletterForm username="hijinks" />
-            </div>
-          </ProjectCard>
-        </div>
       </div>
     </section>
 
@@ -1057,6 +1059,12 @@ import '../styles/global.css';
     </p>
   </footer>
 
+
+<script>
+  import { watchTileFrame } from '../scripts/logo-tiles.js';
+  const frame = document.querySelector('.newsletter-frame');
+  if (frame) watchTileFrame(frame, 14);
+</script>
 
 <script>
   import { Gradient } from '../scripts/gradient.js';
