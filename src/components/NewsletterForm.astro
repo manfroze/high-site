@@ -1,0 +1,165 @@
+---
+interface Props {
+  /** Buttondown handle. Public — it appears in the endpoint URL. */
+  username: string;
+  /** Namespaces element ids so the form can appear twice on one page. */
+  formId?: string;
+  placeholder?: string;
+  cta?: string;
+  note?: string;
+}
+
+const {
+  username,
+  formId = 'newsletter',
+  placeholder = 'you@email.com',
+  cta = 'Join',
+  note = 'Only when we ship. Unsubscribe anytime.',
+} = Astro.props;
+
+const action = `https://buttondown.com/api/emails/embed-subscribe/${username}`;
+---
+
+{/*
+  target="_self" is load-bearing: Layout.astro sets <base target="_blank">,
+  which applies to form submission too. Without it the no-JS fallback
+  submits into a new tab.
+*/}
+<form class="newsletter-form" action={action} method="post" target="_self" data-newsletter>
+  <label class="newsletter-label" for={`${formId}-email`}>Email address</label>
+
+  <div class="newsletter-row">
+    <input
+      class="newsletter-input"
+      id={`${formId}-email`}
+      type="email"
+      name="email"
+      placeholder={placeholder}
+      autocomplete="email"
+      required
+    />
+    <button class="newsletter-btn" type="submit">{cta}</button>
+  </div>
+
+  {/* Honeypot — off-screen, skipped by tab order. Bots fill it, people don't. */}
+  <div class="newsletter-hp" aria-hidden="true">
+    <label for={`${formId}-website`}>Leave this field empty</label>
+    <input id={`${formId}-website`} type="text" name="hp_website" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <p class="newsletter-status" role="status" aria-live="polite"></p>
+  <p class="newsletter-note">{note}</p>
+</form>
+
+<style>
+  /* Structural only. Every visual decision lives in global.css under
+     #newsletter, so the card can be redesigned without opening this file. */
+
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .newsletter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .newsletter-status,
+  .newsletter-note {
+    margin: 0;
+  }
+
+  .newsletter-status:empty {
+    display: none;
+  }
+
+  /* On success the field is gone and only the confirmation remains. */
+  .newsletter-form[data-state='success'] .newsletter-row,
+  .newsletter-form[data-state='success'] .newsletter-note {
+    display: none;
+  }
+
+  /* Visually hidden, still read aloud. */
+  .newsletter-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .newsletter-hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('form[data-newsletter]').forEach((el) => {
+    const form = el as HTMLFormElement;
+    const input = form.querySelector('.newsletter-input') as HTMLInputElement;
+    const btn = form.querySelector('.newsletter-btn') as HTMLButtonElement;
+    const status = form.querySelector('.newsletter-status') as HTMLElement;
+    const honeypot = form.querySelector('.newsletter-hp input') as HTMLInputElement;
+    const idleLabel = btn.textContent;
+
+    const setState = (state: string, message: string) => {
+      form.dataset.state = state;
+      status.textContent = message;
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (form.dataset.state === 'submitting') return;
+
+      // Filled honeypot: skip the request, show the normal success state.
+      // A bot that sees a distinct response learns how to get past this.
+      if (honeypot?.value) {
+        setState('success', 'Check your inbox to confirm.');
+        return;
+      }
+
+      if (!input.checkValidity()) {
+        input.reportValidity();
+        return;
+      }
+
+      setState('submitting', '');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ email: input.value }),
+        });
+
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        // Double opt-in, so this is true whether the address is new or
+        // already on the list — no way to leak who is subscribed.
+        setState('success', 'Check your inbox to confirm.');
+
+        const gtag = (window as any).gtag;
+        if (typeof gtag === 'function') gtag('event', 'newsletter_signup');
+      } catch {
+        setState('error', "That didn't go through. Try again in a moment.");
+        btn.disabled = false;
+        btn.textContent = idleLabel;
+      }
+    });
+  });
+</script>

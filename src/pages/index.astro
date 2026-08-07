@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import NewsletterForm from '../components/NewsletterForm.astro';
 import '../styles/global.css';
 ---
 
@@ -1026,6 +1027,21 @@ import '../styles/global.css';
               <span class="card-btn">Play &rarr;</span>
             </div>
           </ProjectCard> -->
+        </div>
+
+        <!-- No href: ProjectCard renders it as a full-card <a> overlay,
+             which would swallow clicks on the email input.
+             username must match the real Buttondown handle. -->
+        <div class="card-grid">
+          <ProjectCard id="newsletter">
+            <div class="card-inner">
+              <strong class="newsletter-title">
+                <span class="cyan">Get</span> <span class="red">the</span> <span class="pink">next</span> <span class="cyan">one</span>
+              </strong>
+              <p class="card-desc">A few emails a year, when we ship something. That's the whole promise.</p>
+              <NewsletterForm username="hijinks" />
+            </div>
+          </ProjectCard>
         </div>
       </div>
     </section>

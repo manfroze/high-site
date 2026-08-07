@@ -72,14 +72,11 @@ States:
 3. **success** — form replaced by "Check your inbox to confirm."
 4. **error** — message shown, form still usable for retry
 
-### CORS contingency
+### CORS — resolved 2026-08-07
 
-The embed endpoint may not return permissive CORS headers. **Verify with curl during implementation.**
+Probed with a real cross-origin POST: the endpoint returns **`access-control-allow-origin: *`**. So the response is readable and the opaque `no-cors` fallback is unnecessary.
 
-- If `Access-Control-Allow-Origin` is present: read the real response and report accurately.
-- If not: submit with `mode: 'no-cors'`. The response is opaque, so success cannot be distinguished from a duplicate address — but under double opt-in "Check your inbox to confirm" is true in both cases, so the message stays honest. A genuine network failure still rejects the promise and surfaces as a real error.
-
-Both paths differ by one branch in the same component; the choice is made once, at implementation time, from observed behavior.
+Implementation reads `response.ok` and reports accurately: non-2xx becomes a visible error rather than a false success. Confirmed end to end in the browser — a POST to an unclaimed handle returns 404 and lands in the error state.
 
 ### Traps to handle
 
