@@ -1,0 +1,40 @@
+---
+// Single source of truth for where "support us" goes, for every HIGH project.
+// Product sites link here — /support?from=chromle — rather than to Ko-fi directly,
+// so the destination can change in one place instead of in ten codebases.
+//
+// The ?from= tag is not forwarded to Ko-fi; it exists so the referring project is
+// recorded in the nginx access log, which already logs the full request URI. Read it with:
+//   grep -o '/support?from=[a-z-]*' /var/log/nginx/access.log | sort | uniq -c | sort -rn
+const SUPPORT_URL = 'https://ko-fi.com/hijinksuno';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Support HIGH</title>
+    <meta name="robots" content="noindex" />
+    <!-- No-JS fallback. The script below is preferred: location.replace keeps this
+         hop out of history, so Back returns to the project the visitor came from. -->
+    <meta http-equiv="refresh" content={`0;url=${SUPPORT_URL}`} />
+    <link rel="canonical" href={SUPPORT_URL} />
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        color: #333;
+      }
+      a { color: #D979FF; }
+    </style>
+  </head>
+  <body>
+    <p>Taking you to Ko-fi… <a href={SUPPORT_URL}>Continue &rarr;</a></p>
+    <script is:inline define:vars={{ SUPPORT_URL }}>
+      location.replace(SUPPORT_URL);
+    </script>
+  </body>
+</html>
