@@ -3,3 +3,5 @@ dist/
 .DS_Store
 .env
 .playwright-mcp/
+.astro/
+.claude/settings.local.json
