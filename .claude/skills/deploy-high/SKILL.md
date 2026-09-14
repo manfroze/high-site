@@ -37,9 +37,9 @@ npm run build            # → dist/
 ```bash
 ls -1 dist/ | sort
 ssh manfroze@167.99.219.6 'ls -1 /var/www/high/ | sort'
-rsync -avz --delete --checksum --dry-run dist/ manfroze@167.99.219.6:/var/www/high/ | grep '^deleting '
+rsync -avz --delete --checksum --exclude 'worldmatrix/' --exclude 'voidjunker/' --dry-run dist/ manfroze@167.99.219.6:/var/www/high/ | grep '^deleting '
 
-rsync -avz --delete --checksum dist/ manfroze@167.99.219.6:/var/www/high/
+rsync -avz --delete --checksum --exclude 'worldmatrix/' --exclude 'voidjunker/' dist/ manfroze@167.99.219.6:/var/www/high/
 ```
 
 ## 4. Verify
@@ -49,6 +49,12 @@ curl -sI https://hijinks.uno/ | head -3      # 200, server: nginx
 ```
 
 ## Gotchas
+
+- **The `--exclude` flags are required.** Two separate sites live in subdirectories of this web root and are *not* part of the Astro build, so `--delete` wipes them if they are not excluded:
+  - `/var/www/high/worldmatrix/` — the world matrix, deployed from `htdocs/worldmatrix/deploy.sh`.
+  - `/var/www/high/voidjunker/` — the game at hijinks.uno/voidjunker, deployed from `htdocs/void-junker` with `/deploy-voidjunker`.
+
+  Anything else added under hijinks.uno as a subpath needs its own exclude here too. The dry-run is what catches a forgotten one: if `grep '^deleting '` lists files you do not recognise, stop.
 
 - Astro emits hashed JS/CSS under `_astro/` (Vite-style `assets/` won't exist) — don't be alarmed the dry-run touches `_astro/`.
 - Web root is `manfroze:www-data`; rsync keeps files world-readable so nginx serves them.
