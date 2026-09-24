@@ -973,6 +973,21 @@ footer {
   font-family: 'Space Grotesk', sans-serif;
 }
 
+/* Feedback board and support page, on the copyright line after a bullet each. */
+.footer-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  opacity: 0.6;
+}
+
+.footer-sep {
+  color: #999;
+  margin: 0 0.4em;
+}
+
 /* ---- Newsletter card ----
    PLACEHOLDER SKIN — deliberately plain, meant to be replaced.
    NewsletterForm.astro carries structure only (the flex row, the hidden
@@ -1043,21 +1058,6 @@ footer {
   color: #fff;
   background: #111;
   border: none;
-/* Feedback board and support page, on the copyright line after a bullet each. */
-.footer-link {
-  color: inherit;
-  text-decoration: none;
-}
-
-.footer-link:hover {
-  opacity: 0.6;
-}
-
-.footer-sep {
-  color: #999;
-  margin: 0 0.4em;
-}
-
   border-radius: 4px;
   cursor: pointer;
 }
