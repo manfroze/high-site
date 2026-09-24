@@ -1078,6 +1078,10 @@ import '../styles/global.css';
     let visible = !('IntersectionObserver' in window);
     let ready = false;
     const apply = () => { if (ready) { visible ? gradient.play() : gradient.pause(); } };
+      <span class="footer-sep" aria-hidden="true"> &bull; </span>
+      <a class="footer-link" href="/support?from=footer">Buy us a coffee</a>
+      <span class="footer-sep" aria-hidden="true"> &bull; </span>
+      <a class="footer-link" href="https://feedback.hijinks.uno">Feedback</a>
     const poll = setInterval(() => {
       if (canvas.classList.contains('isLoaded')) { ready = true; clearInterval(poll); apply(); }
     }, 100);
