@@ -881,6 +881,76 @@ main > *:not(.card-category):not(.icon-column) {
   100% { transform: scale(0.48) translate(0, 0);              opacity: 0.14; }
 }
 
+/* ---- Void Junker ---- */
+
+#voidjunker {
+  background-color: #05070c;
+}
+
+/* The tile is the starfield with a vertical mirror appended, so a loop
+   of exactly half its height returns to the same pixels and the scroll
+   never crosses a seam. */
+.voidjunker-stars {
+  position: absolute;
+  inset: 0;
+  background-image: url('/img/voidjunker/stars.png');
+  background-repeat: repeat;
+  background-size: 951px auto;
+  image-rendering: pixelated;
+  animation: voidjunker-drift 90s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes voidjunker-drift {
+  from { background-position: 0 0; }
+  to   { background-position: 0 2080px; }
+}
+
+/* Captured from the game's own ship-lab render and cut out to a real
+   alpha silhouette, so the hull occludes the starfield behind it. A
+   blend mode can't do this: screen lets every star punch through. */
+.voidjunker-ship {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 94%;
+  width: auto;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.voidjunker-logo {
+  height: 110px;
+  width: auto;
+  image-rendering: pixelated;
+}
+
+/* Matches the itch badge size on the Ship Shape card. */
+.voidjunker-badge {
+  position: absolute;
+  right: 32px;
+  bottom: 28px;
+  height: 42px;
+  width: auto;
+  z-index: 3;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voidjunker-stars {
+    animation: none;
+  }
+}
+
+/* Below ~464px the logo and the badge would meet in the bottom row, so
+   the badge moves to the opposite corner rather than shrinking. */
+@media (max-width: 480px) {
+  .voidjunker-badge {
+    top: 28px;
+    bottom: auto;
+  }
+}
+
 /* ---- Ship Shape ---- */
 
 #shipshape {
@@ -1149,6 +1219,10 @@ footer {
   .project-card {
     flex: 0 0 auto;
     width: 100%;
+  }
+
+  .voidjunker-ship {
+    display: none;
   }
 
   .extravagaria-cards {
