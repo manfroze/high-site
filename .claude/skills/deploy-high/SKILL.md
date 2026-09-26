@@ -30,9 +30,13 @@ build. Without an `--exclude` each, `--delete` wipes them:
 - `ident/` — deployed from `htdocs/high-ident` with `/deploy-ident`
 
 ```bash
-deploy-static --exclude worldmatrix/ --exclude voidjunker/ --exclude ident/ dist/ /var/www/high/        # dry run
-deploy-static --go --exclude worldmatrix/ --exclude voidjunker/ --exclude ident/ dist/ /var/www/high/
+deploy-static --exclude /worldmatrix/ --exclude /voidjunker/ --exclude /ident/ dist/ /var/www/high/        # dry run
+deploy-static --go --exclude /worldmatrix/ --exclude /voidjunker/ --exclude /ident/ dist/ /var/www/high/
 ```
+
+Keep the leading `/`. It anchors each exclude to the web root. Without it,
+rsync matches the name at any depth, so `voidjunker/` also skipped
+`dist/img/voidjunker/` and the card's images never reached the server.
 
 A new hijinks.uno subpath needs its own exclude here. `deploy-static` refuses
 to `--go` if a whole top-level directory would be deleted, which is what a
