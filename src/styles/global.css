@@ -883,6 +883,32 @@ main > *:not(.card-category):not(.icon-column) {
 
 /* ---- Void Junker ---- */
 
+/* Mind Valley: navy, its app icon and logotype, and its promo video's asterisks and
+   sunbursts on the right (pattern shared with feedback.hijinks.uno). */
+#mindvalley {
+  background: var(--grain), #141c48;
+  color: #fff;
+}
+
+.mindvalley-logo {
+  height: 44px;
+  width: auto;
+}
+
+#mindvalley .card-desc {
+  color: #c9cdf0;
+}
+
+.mindvalley-pattern {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  height: 340px;
+  width: auto;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
 #voidjunker {
   background-color: #05070c;
 }
@@ -1221,7 +1247,8 @@ footer {
     width: 100%;
   }
 
-  .voidjunker-ship {
+  .voidjunker-ship,
+  .mindvalley-pattern {
     display: none;
   }
 

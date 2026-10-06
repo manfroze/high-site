@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+<!-- Mind Valley tile pattern: motifs and colours from the app's promo video. -->
+<circle cx="230" cy="215" r="120" fill="none" stroke="#e0e0fc" stroke-opacity="0.22" stroke-width="2"/>
+<path d="M254 132L266 132M252.67 139.52L263.95 143.63M248.85 146.14L258.05 153.85M243 151.05L249 161.44M235.82 153.67L237.9 165.48M228.18 153.67L226.1 165.48M221 151.05L215 161.44M215.15 146.14L205.95 153.85M211.33 139.52L200.05 143.63M210 132L198 132M211.33 124.48L200.05 120.37M215.15 117.86L205.95 110.15M221 112.95L215 102.56M228.18 110.33L226.1 98.52M235.82 110.33L237.9 98.52M243 112.95L249 102.56M248.85 117.86L258.05 110.15M252.67 124.48L263.95 120.37" stroke="#f499d0" stroke-width="3" stroke-linecap="round" fill="none"/>
+<path d="M118 74L186 74M135 44.56L169 103.44M169 44.56L135 103.44" stroke="#cf008c" stroke-width="11" stroke-linecap="round" fill="none"/>
+<path d="M273 50L299 50M279.5 38.74L292.5 61.26M292.5 38.74L279.5 61.26" stroke="#f4d674" stroke-width="6" stroke-linecap="round" fill="none"/>
+<path d="M53 146L87 146M61.5 131.28L78.5 160.72M78.5 131.28L61.5 160.72" stroke="#93e2c3" stroke-width="7" stroke-linecap="round" fill="none"/>
+<path d="M28 52L48 52M33 43.34L43 60.66M43 43.34L33 60.66" stroke="#ffb878" stroke-width="5" stroke-linecap="round" fill="none"/>
+<path d="M113 40L119 40M111.79 44.5L116.99 47.5M108.5 47.79L111.5 52.99M104 49L104 55M99.5 47.79L96.5 52.99M96.21 44.5L91.01 47.5M95 40L89 40M96.21 35.5L91.01 32.5M99.5 32.21L96.5 27.01M104 31L104 25M108.5 32.21L111.5 27.01M111.79 35.5L116.99 32.5" stroke="#416cf9" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+<circle cx="200" cy="30" r="4" fill="#93e2c3"/>
+<circle cx="300" cy="160" r="5" fill="#ffb878"/>
+<circle cx="150" cy="170" r="3.5" fill="#f4d674"/>
+<circle cx="12" cy="110" r="3" fill="#f499d0"/>
+</svg>
