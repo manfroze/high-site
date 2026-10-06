@@ -20,17 +20,18 @@ cd /Users/manfroze/htdocs/high
 npm run build
 ```
 
-## 2. Deploy — the two excludes are required
+## 2. Deploy — the three excludes are required
 
-Two separate sites live inside this web root and are not part of the Astro
+Three separate folders live inside this web root and are not part of the Astro
 build. Without an `--exclude` each, `--delete` wipes them:
 
 - `worldmatrix/` — deployed from `htdocs/worldmatrix/deploy.sh`
 - `ident/` — deployed from `htdocs/high-ident` with `/deploy-ident`
+- `n26-tool/` — privacy and terms pages for the personal N26 open-banking app, from `htdocs/finances/legal/n26-tool/`
 
 ```bash
-deploy-static --exclude /worldmatrix/ --exclude /ident/ dist/ /var/www/high/        # dry run
-deploy-static --go --exclude /worldmatrix/ --exclude /ident/ dist/ /var/www/high/
+deploy-static --exclude /worldmatrix/ --exclude /ident/ --exclude /n26-tool/ dist/ /var/www/high/        # dry run
+deploy-static --go --exclude /worldmatrix/ --exclude /ident/ --exclude /n26-tool/ dist/ /var/www/high/
 ```
 
 Keep the leading `/`. It anchors each exclude to the web root. Without it,
