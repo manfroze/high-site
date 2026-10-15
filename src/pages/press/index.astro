@@ -1,0 +1,151 @@
+---
+// Press home — hijinks.uno/press/
+// One card per game press kit. Each kit is its own page under /press/<game>/,
+// with its assets in public/press/<game>/. Add a kit by adding a row to KITS.
+const EMAIL = 'highlyintegratedgayhijinks@gmail.com';
+
+const KITS = [
+  {
+    href: '/press/voidjunker/',
+    name: 'Void Junker',
+    image: '/press/voidjunker/art/void-junker-capsule-1232x706.png',
+    width: 1232,
+    height: 706,
+    blurb: 'A top-down 3D sci-fi mining roguelite. Drill asteroids, haul the ore home, and decide what to do about the people in your way.',
+    status: 'Free demo on itch.io · coming soon to Steam',
+  },
+];
+---
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-HQTQQN1JEX"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HQTQQN1JEX');
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HIGH · Press</title>
+  <meta name="description" content="Press kits, contact and studio facts for Highly Integrated Gay Hijinks." />
+  <meta property="og:title" content="HIGH · Press" />
+  <meta property="og:description" content="Press kits, contact and studio facts for Highly Integrated Gay Hijinks." />
+  <meta property="og:image" content="https://hijinks.uno/press/voidjunker/art/void-junker-capsule-1232x706.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cyan: #54E2DC;
+      --cyan-soft: #9ef0ea;
+      --red: #E70006;
+      --pink: #D979FF;
+      --ink: #14161c;
+      --dim: #4f5563;
+      --paper: #f6fdfd;
+      --line: #cdeeed;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; color: var(--ink); font: 17px/1.6 'Space Grotesk', system-ui, sans-serif;
+      background:
+        radial-gradient(60vw 60vw at 85% 10%, #c6f5f2 0%, transparent 60%),
+        radial-gradient(50vw 50vw at 10% 90%, #f0dcff 0%, transparent 60%),
+        var(--paper);
+      min-height: 100vh;
+    }
+    a { color: var(--ink); }
+    a:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding-inline: 20px; padding-block: 36px 64px; display: grid; gap: 48px; }
+
+    header { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 24px; align-items: center; }
+    header .logo { height: 96px; width: auto; display: block; }
+    h1 { margin: 0; font-size: clamp(40px, 7vw, 64px); line-height: 1; letter-spacing: -.02em; }
+    .who { margin: 8px 0 0; color: var(--dim); max-width: 52ch; }
+    .cyan { color: #22b8b0; } .red { color: var(--red); } .pink { color: #b34fe0; }
+
+    h2 { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; margin: 0 0 16px; color: var(--dim); }
+
+    .kits { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+    .kit { display: grid; text-decoration: none; background: #fff; border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--cyan); transition: transform .12s, box-shadow .12s; }
+    .kit:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--pink); }
+    .kit img { width: 100%; height: auto; display: block; aspect-ratio: 1232 / 706; object-fit: cover; border-bottom: 2px solid var(--ink); background: #07080d; }
+    .kit .body { padding: 16px 18px 18px; display: grid; gap: 6px; }
+    .kit h3 { margin: 0; font-size: 24px; line-height: 1.1; }
+    .kit p { margin: 0; color: var(--dim); font-size: 15.5px; }
+    .kit .status { font-size: 13px; font-weight: 500; color: var(--ink); }
+    .kit .go { font-weight: 700; margin-top: 6px; }
+    @media (prefers-reduced-motion: reduce) { .kit { transition: none; } .kit:hover { transform: none; } }
+
+    .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .box { background: #ffffffcc; border: 2px solid var(--line); padding: 18px 20px; }
+    .box p { margin: 0 0 8px; }
+    .box p:last-child { margin: 0; }
+    .email { font-weight: 700; font-size: 18px; overflow-wrap: anywhere; user-select: all; }
+    .social { display: flex; flex-wrap: wrap; gap: 14px; }
+    .social a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 500; }
+    .social a:hover { text-decoration: underline; }
+    .social img { width: 22px; height: 22px; }
+
+    footer { color: var(--dim); font-size: 14px; }
+
+    @media (max-width: 560px) {
+      .wrap { padding-inline: 16px; }
+      header { grid-template-columns: minmax(0, 1fr); }
+      header .logo { height: 64px; }
+      .kits { grid-template-columns: minmax(0, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a href="/" aria-label="hijinks.uno home"><img class="logo" src="/img/logo.svg" alt="HIGH" width="400" height="120" /></a>
+      <div>
+        <h1>Press</h1>
+        <p class="who"><strong><span class="cyan">Highly</span> <span class="red">Integrated</span> <span class="pink">Gay</span> <span class="cyan">Hijinks</span></strong> is a creative lab making games and small tools. Press kits, contact and links are below.</p>
+      </div>
+    </header>
+
+    <section aria-labelledby="h-kits">
+      <h2 id="h-kits">Press kits</h2>
+      <div class="kits">
+        {KITS.map((k) => (
+          <a class="kit" href={k.href}>
+            <img src={k.image} alt="" width={k.width} height={k.height} />
+            <span class="body">
+              <h3>{k.name}</h3>
+              <p>{k.blurb}</p>
+              <span class="status">{k.status}</span>
+              <span class="go">Open press kit &rarr;</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section aria-labelledby="h-contact" class="cols">
+      <div class="box">
+        <h2 id="h-contact">Contact</h2>
+        <p class="email">{EMAIL}</p>
+        <p>For press, creators and keys.</p>
+      </div>
+      <div class="box">
+        <h2>Follow</h2>
+        <div class="social">
+          <a href="https://www.youtube.com/@hijinksuno">YouTube</a>
+          <a href="https://highlyintegratedgayhijink.itch.io/"><img src="/img/icon-itch.svg" alt="" />itch.io</a>
+          <a href="https://discord.gg/H48SPgVdUF"><img src="/img/icon-discord.svg" alt="" />Discord</a>
+          <a href="https://mastodon.gamedev.place/@high"><img src="/img/icon-mastodon.svg" alt="" />Mastodon</a>
+          <a href="https://t.me/hijink"><img src="/img/icon-telegram.svg" alt="" />Telegram</a>
+        </div>
+      </div>
+    </section>
+
+    <footer><a href="/">&larr; hijinks.uno</a></footer>
+  </div>
+</body>
+</html>
