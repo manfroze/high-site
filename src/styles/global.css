@@ -911,49 +911,33 @@ main > *:not(.card-category):not(.icon-column) {
   background-color: #05070c;
 }
 
-/* The tile is the starfield with a vertical mirror appended, so a loop
-   of exactly half its height returns to the same pixels and the scroll
-   never crosses a seam. */
-.voidjunker-stars {
-  position: absolute;
-  inset: 0;
-  background-image: url('/img/voidjunker/stars.png');
-  background-repeat: repeat;
-  background-size: 951px auto;
-  image-rendering: pixelated;
-  animation: voidjunker-drift 90s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes voidjunker-drift {
-  from { background-position: 0 0; }
-  to   { background-position: 0 2080px; }
-}
-
-/* Captured from the game's own ship-lab render and cut out to a real
-   alpha silhouette, so the hull occludes the starfield behind it. A
-   blend mode can't do this: screen lets every star punch through. */
+/* The card is the Void Junker box-art painting in two layers, from the
+   game repo's box-art lab (labs/box-art-lab.html, format "HIGH homepage"):
+   the painted sky, and the hauler and rock on transparency over it. Both are
+   2000x568 -- the widest card at 2x -- and cover the card the same way, so
+   they stay registered at every width. The lab checks the hull against this
+   card's wordmark and badges at every width from 824 to 1000px, which is the
+   range the ship is shown at; below a 900px viewport it is hidden (see the
+   responsive rules) and the sky carries the card alone. */
+.voidjunker-sky,
 .voidjunker-ship {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 94%;
-  width: auto;
-  image-rendering: pixelated;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   pointer-events: none;
 }
 
+/* The wordmark is pixel art baked at exactly 240x109, one art pixel per CSS
+   pixel, and shown at that size: crisp at 1x, and doubled exactly on a 2x
+   screen. Any other size would scale it, and scaled pixel art is blurred or
+   uneven. */
 .voidjunker-logo {
-  height: 110px;
-  width: auto;
+  width: 240px;
+  height: 109px;
   image-rendering: pixelated;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .voidjunker-stars {
-    animation: none;
-  }
 }
 
 /* ---- Ship Shape ----
