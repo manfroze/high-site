@@ -952,28 +952,9 @@ main > *:not(.card-category):not(.icon-column) {
   image-rendering: pixelated;
 }
 
-/* Matches the itch badge size on the Ship Shape card. */
-.voidjunker-badge {
-  position: absolute;
-  right: 32px;
-  bottom: 28px;
-  height: 42px;
-  width: auto;
-  z-index: 3;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .voidjunker-stars {
     animation: none;
-  }
-}
-
-/* Below ~464px the logo and the badge would meet in the bottom row, so
-   the badge moves to the opposite corner rather than shrinking. */
-@media (max-width: 480px) {
-  .voidjunker-badge {
-    top: 28px;
-    bottom: auto;
   }
 }
 
@@ -1007,6 +988,41 @@ main > *:not(.card-category):not(.icon-column) {
   right: 32px;
   z-index: 3;
   max-width: 556px;
+}
+
+/* ---- Store badges ----
+   The row of store badges on a game card, at the itch badge's size. The
+   Steam badge is drawn on the itch badge's grid (same 740x228 box, radius,
+   icon slot and text column), so a pair matches side by side and stacked. */
+.store-badges {
+  position: absolute;
+  right: 32px;
+  bottom: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+  z-index: 3;
+}
+
+.store-badges a {
+  display: block;
+}
+
+.store-badges img {
+  display: block;
+  height: 42px;
+  width: auto;
+}
+
+/* Below a ~600px card a card's logo and the badges would meet in the bottom
+   row, so the badges move to the opposite corner rather than shrinking. */
+@media (max-width: 640px) {
+  .store-badges {
+    top: 28px;
+    bottom: auto;
+    left: 32px;
+  }
 }
 
 /* ---- Full-card link overlay ---- */

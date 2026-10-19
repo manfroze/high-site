@@ -53,6 +53,7 @@ curl -sI https://hijinks.uno/worldmatrix/ | head -1
 ## Gotchas
 
 - The dry run touching `_astro/` is normal — Astro's hashed bundles live there.
-- `/voidjunker/` is gone (removed 2026-09-26). The game ships on itch only,
-  at `highlyintegratedgayhijink.itch.io/voidjunker`, and the homepage card links
-  there. A backup of the old build is in `~/site-backups/` on droppalon.
+- `/voidjunker/` is gone (removed 2026-09-26). The game is not hosted here: it
+  ships on itch at `highlyintegratedgayhijink.itch.io/voidjunker`, with a Steam
+  store page for wishlists, and the homepage card links to both. A backup of
+  the old build is in `~/site-backups/` on droppalon.
