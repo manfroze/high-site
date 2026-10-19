@@ -1025,19 +1025,15 @@ import '../styles/global.css';
 
         <div class="card-grid">
           <ProjectCard id="shipshape" cover>
-            <img class="shipshape-logo" src="/img/shipshape-logo.webp" alt="Ship Shape" />
-            <itch-embed
-              class="shipshape-embed"
-              game-url="https://highlyintegratedgayhijink.itch.io/shipshape"
-              title="Ship Shape"
-              author="Highly Integrated Gay Hijinks"
-              description="You've got to ship the shape.\nMatch the shape. Match the color. Match both. Match one but not the other...??? Oh boy! These rules are utterly insane!\nFollow the rules, mind the timer, and avoid the strikes: five, and you're out!\nCan you reach the more... exotic shapes?"
-              bg-color="#ffffff"
-              fg-color="#000000"
-              link-color="#000000"
-              border-color="#000000"
-              border-width="3"
-            ></itch-embed>
+            <div class="shipshape-wall" slot="bg" aria-hidden="true"></div>
+            <picture>
+              <source media="(max-width: 720px)" srcset="/img/shipshape/sign-1x.png" />
+              <img class="shipshape-logo" src="/img/shipshape-logo.webp" alt="Ship Shape" />
+            </picture>
+            <div class="store-badges">
+              <a href="https://highlyintegratedgayhijink.itch.io/shipshape"><img src="/img/badge-itch.svg" alt="Available on itch.io" /></a>
+              <a href="https://play.date/games/ship-shape/"><img src="/img/badge-playdate.svg" alt="Buy it in Catalog" /></a>
+            </div>
           </ProjectCard>
         </div>
 
@@ -1116,90 +1112,6 @@ import '../styles/global.css';
       }, { rootMargin: '200px' }).observe(canvas);
     }
   }
-</script>
-
-<script>
-  class ItchEmbed extends HTMLElement {
-    connectedCallback() {
-      const gameUrl = this.getAttribute('game-url') || '#';
-const title = this.getAttribute('title') || '';
-      const author = this.getAttribute('author') || '';
-      const description = (this.getAttribute('description') || '').replace(/\\n/g, '<br>');
-      const bgColor = this.getAttribute('bg-color') || '#ffffff';
-      const fgColor = this.getAttribute('fg-color') || '#000000';
-      const linkColor = this.getAttribute('link-color') || '#000000';
-      const borderColor = this.getAttribute('border-color') || '#000000';
-      const borderWidth = this.getAttribute('border-width') || '3';
-
-      const shadow = this.attachShadow({ mode: 'open' });
-      shadow.innerHTML = `
-        <style>
-          :host { display: block; }
-          .embed {
-            display: flex;
-            align-items: stretch;
-            width: fit-content;
-            border: ${borderWidth}px solid ${borderColor};
-            border-radius: 3px;
-            background: ${bgColor};
-            color: ${fgColor};
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 14px;
-            overflow: hidden;
-            box-sizing: border-box;
-          }
-          .info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 4px;
-            padding: 12px 16px;
-            flex: 1;
-            min-width: 0;
-          }
-          .title {
-            font-size: 18px;
-            font-weight: bold;
-            line-height: 1.2;
-          }
-          .title a {
-            color: ${linkColor};
-            text-decoration: none;
-          }
-          .title a:hover { text-decoration: underline; }
-          .author {
-            font-size: 13px;
-            opacity: 0.7;
-          }
-          .description {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 13px;
-            line-height: 1.4;
-            margin-top: 6px;
-            opacity: 0.8;
-          }
-          .actions {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-top: 12px;
-          }
-          .actions a { display: inline-block; }
-          .actions img { height: 42px; display: block; }
-        </style>
-        <div class="embed">
-<div class="info">
-${description ? `<div class="description">${description}</div>` : ''}
-          </div>
-        </div>
-        <div class="actions">
-          <a href="${gameUrl}"><img src="/img/badge-itch.svg" alt="Available on itch.io" /></a>
-          <a href="https://play.date/games/ship-shape/"><img src="/img/badge-playdate.svg" alt="Buy it in Catalog" /></a>
-        </div>
-      `;
-    }
-  }
-  customElements.define('itch-embed', ItchEmbed);
 </script>
 
 <script>

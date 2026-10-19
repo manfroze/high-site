@@ -570,8 +570,6 @@ main > *:not(.card-category):not(.icon-column) {
 #yarda .card-desc   { color: rgba(0,50,10,0.65); background: #2ac53a; padding: 4px 8px; border-radius: 4px; }
 #yarda .card-tags span  { color: rgba(0,50,10,0.55); background: rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.12); }
 
-#shipshape .card-desc  { color: #333; }
-#shipshape .card-tags span { color: #333; background: rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.12); }
 
 /* Light cards — dark text */
 #vexillomania .card-desc  { color: #667085; }
@@ -958,42 +956,64 @@ main > *:not(.card-category):not(.icon-column) {
   }
 }
 
-/* ---- Ship Shape ---- */
+/* ---- Ship Shape ----
+   The game's own screen: the in-game tube, timer, B button, holding frame
+   and belt at 1.5x game pixels on the game's brick wall (one image, so it
+   can sit anywhere), with the itch banner's 2x sign on top. At 1.5x the
+   holding frame (152 game px) is 228px and fits the card whole, and on a
+   2x screen every game pixel is exactly 3 device pixels. The wall is
+   anchored right so the frame and the belt stay under the store badges as
+   the card narrows; the timer slides behind the sign. */
 
 #shipshape {
   background-color: #fff;
-  background-image: url('/img/bricks.png');
-  background-repeat: repeat;
-  background-size: auto;
-  image-rendering: pixelated;
 }
 
-
+.shipshape-wall {
+  position: absolute;
+  inset: 0;
+  /* Screen rows 28..217 in view: the holding frame centred. */
+  background: url('/img/shipshape/wall.png') right -0.5px top -42px / 1000.5px 360px no-repeat;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
 
 .shipshape-logo {
   position: absolute;
-  top: 0;
   left: 32px;
-  bottom: 0;
-  width: auto;
-  height: 100%;
+  top: -34px;
+  width: 320px;
+  height: auto;
   image-rendering: pixelated;
   z-index: 1;
 }
 
-.shipshape-embed {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 32px;
-  z-index: 3;
-  max-width: 556px;
+/* Below a ~700px card the full-size sign would meet the badges. The 1x
+   sign at the wall's own 1.5x scale (240px) leaves them room. */
+@media (max-width: 720px) {
+  .shipshape-logo {
+    width: 240px;
+    top: 11px;
+  }
+}
+
+/* Phones: the badges move to the top, the machine drops out (the wall's
+   left end is plain brick) and the sign sits below the badges. */
+@media (max-width: 640px) {
+  .shipshape-wall {
+    background-position: left top -42px;
+  }
+
+  .shipshape-logo {
+    top: 30px;
+  }
 }
 
 /* ---- Store badges ----
-   The row of store badges on a game card, at the itch badge's size. The
-   Steam badge is drawn on the itch badge's grid (same 740x228 box, radius,
-   icon slot and text column), so a pair matches side by side and stacked. */
+   The row of store badges on a game card (Void Junker, Ship Shape), at the
+   itch badge's size. The Steam badge is drawn on the itch badge's grid
+   (same 740x228 box, radius, icon slot and text column), so a pair matches
+   side by side and stacked. */
 .store-badges {
   position: absolute;
   right: 32px;
@@ -1022,6 +1042,26 @@ main > *:not(.card-category):not(.icon-column) {
     top: 28px;
     bottom: auto;
     left: 32px;
+  }
+}
+
+/* On small phones a pair stops fitting one row (Ship Shape's Catalog badge
+   is 5px wider than itch's). A tighter gap holds it down to ~375px, then a
+   slightly smaller pair beats wrapping a second row onto the logo. */
+@media (max-width: 400px) {
+  .store-badges {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 372px) {
+  .store-badges {
+    left: 20px;
+    right: 20px;
+  }
+
+  .store-badges img {
+    height: 36px;
   }
 }
 
