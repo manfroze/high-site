@@ -153,8 +153,8 @@ const action = `https://buttondown.com/api/emails/embed-subscribe/${username}`;
         // already on the list — no way to leak who is subscribed.
         setState('success', 'Check your inbox to confirm.');
 
-        const gtag = (window as any).gtag;
-        if (typeof gtag === 'function') gtag('event', 'newsletter_signup');
+        const umami = (window as any).umami;
+        if (umami && typeof umami.track === 'function') umami.track('newsletter_signup');
       } catch {
         setState('error', "That didn't go through. Try again in a moment.");
         btn.disabled = false;
